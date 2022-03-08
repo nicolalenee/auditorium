@@ -4,7 +4,7 @@ const sequelize = require('./config/connection');
 
 const session = require('express-session');
 
-const SequelizeStore = require('connect-session-sequelize')(session.store);
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const sess = {
     secret: 'Need to put our secret here',
