@@ -41,10 +41,3 @@ Comment.belongsTo(Post, {
 });
 
 module.exports = { User, Profile, Post, Comment };
-
-
-
-
-
-
-module.exports = { User, Profile, Post, Comment };
