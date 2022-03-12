@@ -23,7 +23,7 @@ Profile.init (
             type: DataTypes.STRING,
             allowNull: true
         },
-        band_url: {
+        website_url: {
             type: DataTypes.STRING,
             allowNull: true
         },
