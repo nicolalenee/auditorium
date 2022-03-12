@@ -50,7 +50,7 @@ const userdata = [
         username: 'socialexperiment',
         email: 'socialexperiment@gmail.com',
         password: 'socialexperiment1234'
-    }
+    },
     {
         account_type: 'Artist',
         display_name: 'Team Magic',

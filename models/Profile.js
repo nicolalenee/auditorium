@@ -1,4 +1,4 @@
-const { Model, Datatypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Profile extends Model {}
@@ -6,45 +6,45 @@ class Profile extends Model {}
 Profile.init (
     {    
         id: {
-            type: Datatypes.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
         occupation: {
-            type: Datatypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
         industry: {
-            type: Datatypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
         band_name: {
-            type: Datatypes.STRING,
+            type: DataTypes.STRING,
             allowNull: true
         },
         band_url: {
-            type: Datatypes.STRING,
+            type: DataTypes.STRING,
             allowNull: true
         },
         bio: {
-            type: Datatypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
         media: {
-            type: Datatypes.STRING,
+            type: DataTypes.STRING,
             allowNull: true
         },
         location: {
-            type: Datatypes.STRING,
+            type: DataTypes.STRING,
             allowNull: true
         },
         phone_number: {
-            type: Datatypes.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: true
         },
         user_id: {
-            type: Datatypes.INTEGER,
+            type: DataTypes.INTEGER,
             references: {
                 model: 'user',
                 key: 'id'
