@@ -17,19 +17,13 @@ User.init (
             primaryKey: true,
             autoIncrement: true
         },
-        account_type: {
+        first_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        last_name: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        display_name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
-        },
-        username: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
         },
         email: {
             type: DataTypes.STRING,
@@ -43,9 +37,29 @@ User.init (
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [8]
+                len: [6]
             }
         },
+        occupation: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        industry: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        band_name: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        band_url: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        location: {
+            type: DataTypes.STRING,
+            allowNull: true
+        }
     },
     {
         hooks: {
@@ -62,7 +76,7 @@ User.init (
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'user'  
+        modelName: 'user'
     }
 );
 

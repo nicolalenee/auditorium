@@ -26,7 +26,7 @@ const profiledata = [
         industry: 'music',
         band_name: 'The One Man Band',
         band_url: 'https://findtheoneman.com',
-        bio: 'Ill tell you how I feel about school, Jerry. Its a waste of time. Bunch of people runnin around bumpin into each other, got a guy up front says, 2 + 2, and the people in the back say, 4. Then the bell rings and they give you a carton of milk and a piece of paper that says you can go take a dump or somethin. I mean, its not a place for smart people, Jerry. I know thats not a popular opinion, but thats my two cents on the issue.'
+        bio: 'Ill tell you how I feel about school, Jerry. Its a waste of time. Bunch of people runnin around bumpin into each other, got a guy up front says, 2 + 2, and the people in the back say, 4. Then the bell rings and they give you a carton of milk and a piece of paper that says you can go take a dump or somethin. I mean, its not a place for smart people, Jerry. I know thats not a popular opinion, but thats my two cents on the issue.',
         media: 'https://youtu.be/d-guQ3Pki-0',
         location: 'New York',
         phone_number: 212-222-1235,
