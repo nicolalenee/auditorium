@@ -1,6 +1,6 @@
 const express = require('express');
 const sequelize = require('./config/connection');
-// will need to add const routes here
+const routes = require('./routes');
 
 const session = require('express-session');
 
@@ -30,10 +30,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session(sess));
 
+
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 // Will need to connect our Routes Here
+app.use(routes)
 
 // Turn on Connection to db and server
 sequelize.sync({ force: false }).then(() => {
