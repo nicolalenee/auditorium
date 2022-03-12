@@ -13,11 +13,50 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/:occupation', (req, res) => {
+  User.findAll({
+    attributes: { exclude: ['password'] }
+  })
+    .then(dbUserData => res.json(dbUserData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get('/:location', (req, res) => {
+  User.findAll({
+    attributes: { exclude: ['password'] }
+  })
+    .then(dbUserData => res.json(dbUserData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 // GET 1
-  router.get('/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     User.findOne({
-      include: [
+      include: [ band_name, location, occupation, band_url
       ]
+    })
+      .then(dbUserData => {
+        if (!dbUserData) {
+          res.status(404).json({ message: 'No user found with this id '});
+          return;
+        }
+        res.json(dbUserData);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
+
+  router.get('/:band_name', (req, res) => {
+    User.findOne({
+      include: [ location, occupation, band_url]
     })
       .then(dbUserData => {
         if (!dbUserData) {
@@ -36,9 +75,15 @@ router.get('/', (req, res) => {
 // POST 
   router.post('/', (req, res) => {
     User.create({
-      username: req.body.username,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      band_name: req.body.band_name,
+      occupation: req.body.occupation,
+      industry: req.body.industry,
+      location: req.body.location
+
     })
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {
