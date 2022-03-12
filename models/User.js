@@ -45,7 +45,7 @@ User.init (
             validate: {
                 len: [8]
             }
-        },
+        }
     },
     {
         hooks: {
@@ -62,8 +62,8 @@ User.init (
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'user'  
-    }
+        modelName: 'user' 
+    },
 );
 
 module.exports = User;

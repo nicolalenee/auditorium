@@ -7,7 +7,7 @@ const commentdata = [
         post_id: 1
     },
     {
-        comment_text: 'Mammasay mammasa mamma oo sa pharetra, gangsta egestas facilisis malesuada, get down get down phat consequat get down get down, mollis we gonna chung break yo neck, yall my shizz izzle sure. Class aptent tellivizzle sociosqu ad mah nizzle bizzle per conubia nostra, pizzle mammasay mammasa mamma oo sa pizzle.',
+        comment_text: 'Mammasay mammasa mamma oo sa pharetra, gangsta egestas facilisis malesuada, get down get down phat consequat get down get down, mollis we gonna chung break yo neck, yall my shizz izzle sure.',
         user_id: 4,
         post_id: 3
     },
