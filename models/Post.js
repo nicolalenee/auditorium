@@ -16,7 +16,7 @@ Post.init (
             allowNull: false
         },
         content: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false
         },
         // Connection to the User Model
@@ -26,7 +26,9 @@ Post.init (
                 model: 'user',
                 key: 'id'
             }
-        },
+        }
+    },
+    {
         sequelize,
         freezeTableName: true,
         underscored: true,
