@@ -1,5 +1,4 @@
 const express = require('express');
-const app = express();
 const sequelize = require('./config/connection');
 const routes = require('./routes');
 
@@ -23,7 +22,7 @@ const hbs = exphbs.create({});
 
 const path = require('path');
 
-// const app = express();
+const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
@@ -36,8 +35,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 // Will need to connect our Routes Here
-app.use(routes);
-
+app.use(routes)
 
 // Turn on Connection to db and server
 sequelize.sync({ force: false }).then(() => {
