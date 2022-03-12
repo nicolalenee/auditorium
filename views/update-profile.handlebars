@@ -1,0 +1,85 @@
+<section id="top" class="has-text-centered mt-6 mb-6 is-mobile">
+      <h1 class="has-text-info is-size-3">Update Your Profile</h1>
+    </section> 
+    <section id="bottom" class="container is-flex is-flex-row is-mobile p-5">
+      <!--form begin here-->
+      <div id="form-area" class="container p-2 is-flex is-flex-direction-column has-background-light">
+
+        <!--industry/profession-->
+        <div class="field mb-3">
+          <label class="label">Industry/ Profession</label>
+            <div class="control">
+              <input class="input" type="text" list="professions" id="profession" name="profession">
+
+              <datalist id="professions">
+                <option value="Restaurant"></option>
+                <option value="Lounge"></option>
+                <option value="Theatre"></option>
+                <option value="Band"></option>
+                <option value="Photographer"></option>
+                <option value="Videographer"></option>
+              </datalist>
+
+              <p class="help">Enter or select a profession that describes your talent. Now is the time to define what you do best!</p>
+            </div>
+        </div>
+
+        <!--Region-->
+        <div class="field mb-3">
+          <label class="label">Region</label>
+          <input class="input" type="text" id="region">
+          <p class="help">This region can be where an artist may be willing to travel for work. For venues, this region can simply be where you are located.</p>
+        </div>
+
+        <!--phone number-->
+        <div class="field mb-3">
+          <label class="label">Contact Number</label>
+          <div class="control">
+            <input class="input" type="tel" id="contact-number">
+            <p class="help">This number is to be displayed on your page if you would like to be contacted by phone. It's completely optional.</p>
+          </div>
+        </div>
+        
+        <!--band url-->
+        <div class="field mb-3">
+          <label class="label">Website URL</label>
+          <div class="control">
+            <input class="input" type="url" id="website-url" name="website-url">
+          </div>
+        </div>
+
+        <!--bio-->
+        <div class="field mb-3">
+          <label class="label">Bio</label>
+          <textarea class="textarea no-resize" id="bio"></textarea>
+          <p class="help">Talk about yourself! Let the people know what you're all about!</p>
+        </div>
+
+        <!--media-->
+        <div class="field mb-3">
+          <div class="control">
+            <label class="label">Media</label>
+            <input class="input mb-1" type="file" id="uploaded-media-1" name="user-media-1">
+
+            <input class="input mb-1" type="file" id="uploaded-media-2" name="user-media-2">
+
+            <input class="input mb-1" type="file" id="uploaded-media-3" name="user-media-3">
+            
+            <p class="help">Upload some media you would like show off to your audience! </p>
+
+          </div>
+        </div>
+
+        <div class="field mb-3">
+          <div class="control">
+            <button class="button is-info" type="submit">Submit</button>
+          </div>
+
+        </div>
+      <!-- end form-->
+      </div>
+
+
+      </div>
+
+    </section>
