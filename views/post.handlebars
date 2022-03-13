@@ -1,14 +1,13 @@
 {{> post-info post}}
 
 {{#if loggedIn}}
-<form class="comment-form">
+<form class="comment">
   <div>
-    <textarea name="comment-body"></textarea>
+    <textarea class="textarea" placeholder="...your comment here"></textarea>
   </div>
 
   <div>
-    <button type="submit">add comment</button>
-    <button type="button" class="upvote-btn">upvote</button>
+    <button type="submit">Add comment</button>
   </div>
 </form>
 {{/if}}
@@ -17,5 +16,4 @@
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
-<script src="/javascript/upvote.js"></script>
 {{/if}}
