@@ -49,7 +49,9 @@ Profile.init (
                 model: 'user',
                 key: 'id'
             }
-        },
+        }
+    },
+    {
         sequelize,
         freezeTableName: true,
         underscored: true,

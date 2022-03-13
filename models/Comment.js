@@ -32,6 +32,8 @@ Comment.init (
                 key: 'id'
             }
         },
+    },
+    {
         sequelize,
         freezeTableName: true,
         underscored: true,

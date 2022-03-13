@@ -1,0 +1,52 @@
+const router = require('express').Router();
+const { Profile } = require('../../models');
+
+
+router.get('/profile', (req, res) => {
+  let results = profiles;
+  if (req.query) {
+    results = filterByQuery(req.query, results);
+  }
+  res.json(results);
+});
+
+router.post('/', (req, res) => {
+  Profile.create({
+    occupation: req.body.occupation,
+    industry: req.body.industry,
+    band_name: req.body.band_name,
+    website_url: req.body.website_url,
+    bio: req.body.bio,
+    media: req.body.media,
+    location: req.body.location,
+    phone_number: req.body.phone_number,
+    user_id: req.body.user_id
+  })
+  .then(dbProfileData => res.json(dbProfileData))
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
+router.put('/:id', (req, res) => {
+  Profile.update(req.body, {
+    individualHooks: true,
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbProfileData => {
+      if (!dbProfileData[0]) {
+        res.status(404).json({ message: 'No profile found with this id' });
+        return;
+      }
+      res.json(dbProfileData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+module.exports = router;
