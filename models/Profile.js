@@ -28,7 +28,7 @@ Profile.init (
             allowNull: true
         },
         bio: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false
         },
         media: {
@@ -40,7 +40,7 @@ Profile.init (
             allowNull: true
         },
         phone_number: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: true
         },
         user_id: {
