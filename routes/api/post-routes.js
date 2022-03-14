@@ -13,17 +13,6 @@ router.get('/:occupation', (req, res) => {
     });
 });
 
-router.get('/:location', (req, res) => {
-  Post.findAll({
-    attributes: { exclude: ['password'] }
-  })
-    .then(dbPostData => res.json(dbPostData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
 router.post('/', (req, res) => {
   Post.create({
     id: req.body.id,

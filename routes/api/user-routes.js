@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const { sequelize } = require('../../models/User');
 
 // GET 
 router.get('/', (req, res) => {
@@ -39,7 +40,7 @@ router.get('/:id', (req, res) => {
       account_type: req.body.account_type,
       username: req.body.username,
       email: req.body.email,
-      password: req.body.password, 
+      password: req.body.password 
     })
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {

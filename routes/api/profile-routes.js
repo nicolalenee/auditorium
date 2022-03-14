@@ -1,13 +1,33 @@
 const router = require('express').Router();
 const { Profile } = require('../../models');
+const  filterByQuery = require('../../lib/profiles');
+const { profiles } = require('../../seeds/profile-seeds');
+const { sequelize } = require('../../models/User');
 
 
-router.get('/profile', (req, res) => {
-  let results = profiles;
+
+router.get('/', (req, res) => {
+  Profile.findAll({
+    attributes: [band_name, location, occupation,
+    [sequelize.literal('(SELECT COUNT(*) FROM location WHERE location = profile.location')]
+  ]
+    
+  });
   if (req.query) {
     results = filterByQuery(req.query, results);
   }
+  console.log(results);
   res.json(results);
+});
+
+router.get('/', (req, res) => {
+  Profile.findAll({
+  })
+    .then(dbProfileData => res.json(dbProfileData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 router.post('/', (req, res) => {
