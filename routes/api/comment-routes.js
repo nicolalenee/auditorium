@@ -1,12 +1,30 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
+const { Comment } = require('../../models');
 
 
-router.get('/:occupation', (req, res) => {
-  Post.findAll({
+router.get('/', (req, res) => {
+  Comment.findAll({
     attributes: { exclude: ['password'] }
   })
-    .then(dbPostData => res.json(dbPostData))
+    .then(dbCommentData => res.json(dbCommentData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get('/:id', (req, res) => {
+  Comment.findOne({
+    include: [ band_name, location, occupation, band_url
+    ]
+  })
+    .then(dbCommentData => {
+      if (!dbCommentData) {
+        res.status(404).json({ message: 'No user found with this id '});
+        return;
+      }
+      res.json(dbCommentData);
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -14,13 +32,13 @@ router.get('/:occupation', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  Post.create({
+  Comment.create({
     id: req.body.id,
-    title: req.body.title,
-    content: req.body.content,
+    comment_text: req.body.title,
+    post_id: req.body.content,
     user_id: req.body.user_id
   })
-  .then(dbPostData => res.json(dbPostData))
+  .then(dbCommentData => res.json(dbCommentData))
   .catch(err => {
     console.log(err);
     res.status(500).json(err);
@@ -28,17 +46,17 @@ router.post('/', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  Post.destroy({
+  Comment.destroy({
     where: {
       id: req.params.id
     }
   })
-    .then(dbPostData => {
-      if (!dbPostData) {
+    .then(dbCommentData => {
+      if (!dbCommentData) {
         res.status(404).json({ message: 'No user found with this id' });
         return;
       }
-      res.json(dbPostData);
+      res.json(dbCommentData);
     })
     .catch(err => {
       console.log(err);
@@ -48,18 +66,18 @@ router.delete('/:id', (req, res) => {
 
 router.put('/:id', (req, res) => {
 
-  Post.update(req.body, {
+  Comment.update(req.body, {
     individualHooks: true,
     where: {
       id: req.params.id
     }
   })
-    .then(dbPostData => {
-      if (!dbPostData[0]) {
+    .then(dbCommentData => {
+      if (!dbCommentData[0]) {
         res.status(404).json({ message: 'No user found with this id' });
         return;
       }
-      res.json(dbPostData);
+      res.json(dbCommentData);
     })
     .catch(err => {
       console.log(err);
