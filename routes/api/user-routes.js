@@ -27,8 +27,7 @@ router.get('/:id', (req, res) => {
           model: Profile,
           attributes: ['id', 'band_name', 'location']
         }
-    ]
-      
+      ] 
     })
       .then(dbUserData => {
         if (!dbUserData) {
