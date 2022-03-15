@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post } = require('../../models');
 
 
-router.get('/:occupation', (req, res) => {
+router.get('/', (req, res) => {
   Post.findAll({
     attributes: { exclude: ['password'] }
   })
@@ -15,7 +15,6 @@ router.get('/:occupation', (req, res) => {
 
 router.post('/', (req, res) => {
   Post.create({
-    id: req.body.id,
     title: req.body.title,
     content: req.body.content,
     user_id: req.body.user_id

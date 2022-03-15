@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Comment } = require('../../models');
+const { Comment, User } = require('../../models');
 
 
 router.get('/', (req, res) => {
@@ -15,7 +15,11 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   Comment.findOne({
-    include: [ band_name, location, occupation, band_url
+    include: [
+      {
+        model: User,
+        attributes: ['id', 'display_name', 'account_type']
+      }
     ]
   })
     .then(dbCommentData => {

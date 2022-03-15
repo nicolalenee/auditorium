@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Profile } = require('../../models');
 const { sequelize } = require('../../models/User');
 
 // GET 
@@ -14,11 +14,21 @@ router.get('/', (req, res) => {
     });
 });
 
-// GET 1
+// GET 1 -> needs to be fixed 
 router.get('/:id', (req, res) => {
     User.findOne({
-      include: [ band_name, location, occupation, band_url
-      ]
+      attributes: { exclude: ['password']},
+      where: {
+        id: req.params.id
+      },
+      attributes: ['id', 'account_type', 'display_name'],
+      include: [
+        {
+          model: Profile,
+          attributes: ['id', 'band_name', 'location']
+        }
+    ]
+      
     })
       .then(dbUserData => {
         if (!dbUserData) {
