@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User, Profile } = require('../../models');
 const { sequelize } = require('../../models/User');
+const withAuth = require('../../utils/auth');
 
 // GET 
 router.get('/', (req, res) => {
@@ -93,7 +94,7 @@ router.post('/logout', (req, res) => {
 
 
 // PUT 1
-  router.put('/:id', (req, res) => {
+  router.put('/:id', withAuth, (req, res) => {
 
     User.update(req.body, {
       individualHooks: true,
@@ -116,7 +117,7 @@ router.post('/logout', (req, res) => {
 
 
 // DELETE 1
-  router.delete('/:id', (req, res) => {
+  router.delete('/:id', withAuth, (req, res) => {
     User.destroy({
       where: {
         id: req.params.id
