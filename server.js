@@ -4,8 +4,10 @@ const sequelize = require('./config/connection');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({});
+const helpers = require('./utils/helpers');
+const hbs = exphbs.create({ helpers });
 const path = require('path');
+
 
 
 const session = require('express-session');
@@ -25,7 +27,7 @@ const sess = {
 app.use(session(sess));
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
