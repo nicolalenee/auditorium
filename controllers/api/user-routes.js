@@ -44,20 +44,22 @@ router.get('/:id', (req, res) => {
   });
 
 // POST 
-  router.post('/', (req, res) => {
-    User.create({
-      display_name: req.body.display_name,
-      account_type: req.body.account_type,
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password 
+router.post("/", (req, res) => {
+  User.create({
+    display_name: req.body.display_name,
+    account_type: req.body.account_type,
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+  })
+    .then((dbUserData) => {
+      res.json(dbUserData);
     })
-    .then(dbUserData => res.json(dbUserData))
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
-  });
+});
 
 router.post('/login', (req, res) => {
     User.findOne({

@@ -1,61 +1,83 @@
-<section id= "top" class="has-text-centered mt-6 mb-6 is-mobile">
-      <h1 class="has-text-info is-size-3">Create an account</h1>
-    </section>
+<section id="top" class="has-text-centered mt-6 mb-6 is-mobile">
+  <h1 class="has-text-info is-size-3">Create an account</h1>
+</section>
 
-    <section id="bottom" class="columns is-flex-row is-flex-wrap-wrap is-mobile">
-      <div class="spacer column"></div>
-      <!--form inputs begin here-->
-      <div id= "form-area" class="column box is-two-thirds has-background-light">
+<section id="bottom" class="columns is-flex-row is-flex-wrap-wrap is-mobile">
+  <div class="spacer column"></div>
+  <!--form inputs begin here-->
+  <div id="form-area" class="column box is-two-thirds has-background-light">
 
-        <div id="account-type-field" class="field">
-          <label class="label">Account type</label>
-            <div class="control">
-              <label class="radio">
-                <input id="band-input" type="radio" name="band">Artist</label>
-              <label class="radio">
-                <input id="venue-input" type="radio" name="venue">Venue</label>
-            </div>
-
-            <p class="help">An artist could be a band, photographer, or videographer! A venue could be a restaurant, lounge, or concert hall.</p>
+    <form class="signup-form">
+      <div id="account-type-field" class="field">
+        <label class="label">Account type</label>
+        <div class="control">
+          <label class="radio">
+            <input id="band-input" type="radio" name="band" />Artist</label>
+          <label class="radio">
+            <input id="venue-input" type="radio" name="venue" />Venue</label>
         </div>
 
-        <div id ="display-name-field "class="field">
-          <label class="label">Display Name</label>
-          <input id="display-name-input"class="input" type="text" placeholder="The Red Hot Chili Peppers">
-          <p class="help">How would you like your name to be displayed on your profile?</p>
-        </div>
-
-        <div id ="email-field "class="field">
-          <label class="label">Email Address</label>
-          <input id="email-input"class="input" type="text" placeholder="johnsmith123@example.com">
-          <p class="help">Please enter a valid email address that can be used to contact you.</p>
-        </div>
-
-        <div id ="username-field "class="field">
-          <label class="label">Username</label>
-          <input id="username-input"class="input" type="text" placeholder="rhcpband">
-          <p class="help">Create a unique username that you can use to login to your account.</p>
-        </div>
-
-        <div id="password-field"class="field">
-          <label class="label">Password</label>
-          <input id="password-input"class="input" type="password">
-          <p class="help">Password must contain at least 8 characters, one number, and at least one symbol (!@#$%^&*).</p>
-        </div>
-
-        <div id="confirm-password-field" class="field">
-          <label class="label">Confirm Password</label>
-          <input id="confirm-password-input"class="input" type="password">
-        </div>
-
-
-        <div id="submit-button-field" class="field">
-          <button id="create-account-submit" class="button is-info">Sign Up</button>
-        </div>
-
-
+        <p class="help">An artist could be a band, photographer, or
+          videographer! A venue could be a restaurant, lounge, or concert hall.</p>
       </div>
 
-      <div class="spacer column"></div>
-    <script src="/js/signup.js"></script>
-    </section>
+      <div id="display-name-field" class="field">
+        <label class="label">Display Name</label>
+        <input
+          id="display-name-input"
+          class="input"
+          type="text"
+          placeholder="The Red Hot Chili Peppers"
+        />
+        <p class="help">How would you like your name to be displayed on your
+          profile?</p>
+      </div>
+
+      <div id="email-field " class="field">
+        <label class="label">Email Address</label>
+        <input
+          id="email-input"
+          class="input"
+          type="text"
+          placeholder="johnsmith123@example.com"
+        />
+        <p class="help">Please enter a valid email address that can be used to
+          contact you.</p>
+      </div>
+
+      <div id="username-field " class="field">
+        <label class="label">Username</label>
+        <input
+          id="username-input"
+          class="input"
+          type="text"
+          placeholder="rhcpband"
+        />
+        <p class="help">Create a unique username that you can use to login to
+          your account.</p>
+      </div>
+
+      <div id="password-field" class="field">
+        <label class="label">Password</label>
+        <input id="password-input" class="input" type="password" />
+        <p class="help">Password must contain at least 8 characters, one number,
+          and at least one symbol (!@#$%^&*).</p>
+      </div>
+
+      <div id="confirm-password-field" class="field">
+        <label class="label">Confirm Password</label>
+        <input id="confirm-password-input" class="input" type="password" />
+      </div>
+
+      <div id="submit-button-field" class="field">
+        {{! <button id="create-account-submit" class="button is-info">Sign Up Please</button> }}
+        <button type="submit" class="button is-info">Sign Up Please</button>
+
+      </div>
+    </form>
+
+  </div>
+
+  <div class="spacer column"></div>
+  <script src="/js/signup.js"></script>
+</section>
