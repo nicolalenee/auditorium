@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Post, User } = require('../models');
+const {Post, User, Profile } = require('../models');
 
 // render the homepage and the most recent cards to the 'newest' section
 router.get('/', (req, res) => {
