@@ -1,4 +1,4 @@
-const { Model, Datatypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 const bcrypt = require('bcrypt');
@@ -12,21 +12,27 @@ class User extends Model {
 User.init (
     {
         id: {
-            type: Datatypes.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
-        first_name: {
-            type: Datatypes.STRING,
-            allowNull: false,
-        },
-        last_name: {
-            type: Datatypes.STRING,
+        account_type: {
+            type: DataTypes.STRING,
             allowNull: false
         },
+        display_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
+        },
+        username: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
+        },
         email: {
-            type: Datatypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             unique: true,
             validate: {
@@ -34,31 +40,11 @@ User.init (
             }
         },
         password: {
-            type: Datatypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [6]
+                len: [8]
             }
-        },
-        occupation: {
-            type: Datatypes.STRING,
-            allowNull: false
-        },
-        industry: {
-            type: Datatypes.STRING,
-            allowNull: true
-        },
-        band_name: {
-            type: Datatypes.STRING,
-            allowNull: true
-        },
-        band_url: {
-            type: Datatypes.STRING,
-            allowNull: true
-        },
-        location: {
-            type: Datatypes.STRING,
-            allowNull: true
         }
     },
     {
@@ -76,8 +62,8 @@ User.init (
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'user'  
-    }
+        modelName: 'user' 
+    },
 );
 
 module.exports = User;

@@ -1,0 +1,67 @@
+<section class="hero is-large is-info hero-background hero-image">
+  <div class="hero-body has-text-white">
+    <p class="title">
+      ALGO RHYTHM
+    </p>
+    <p class="subtitle is-italic">
+      Connect and make musical magic happen
+    </p>
+  </div>
+</section>
+
+<section id="newest-posts" class="container">
+  <div class="content is-flex is-flex-direction-column p-6">
+    <div class="container newest-header">
+      <h1 class="title">Newest Posts</h1>
+    </div>
+    <div class="container newest-cards is-flex is-justify-space-between is-mobile">
+      <!--cards handlebars template inserted here-->
+      {{#each posts  as |post|}}
+      {{> cards post }}
+      {{/each}}
+    </div>
+    <!--end cards-->
+</section>
+
+<section id="about-section" class="container">
+  <div class="content is-flex is-flex-direction-column is-justify-content-around p-6 has-background-light">
+    <div class="container about-info is-flex is-flex-direction-column is-justify-content-center">
+      <h2 id="about" class="title">How We Help</h2>
+      <p>AlgoRhythm's mission is to help create a bridge of connection between venues and artists of all sorts within the music industry. We can even help create connections between artists themselves! AlgoRhythm believes that a community-focused approach best serves everyone in planning events that will bring enjoyment to all parties involved. Here are just a few ways that we can help:</p>
+    </div>
+    
+  </div>
+
+  <div class="container about-cards">
+    <div  class="tile is-ancestor is-flex is-justify-content-center">
+
+      <div class="tile is-5 is-parent mb-5">
+        <div class="tile is-child box content">
+          <p class="title">For Venues...</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quam cum dolor facere ipsam ipsum, quos velit, animi at nobis odio ipsa? Molestiae qui iusto sint nisi officia inventore? Fugiat.</p>
+          <ul>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius molestiae aspernatur dolor ducimus.</li>
+            <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab eveniet quas numquam nemo magni illo odio perspiciatis autem. Libero, inventore. Odio atque sunt sequi ad praesentium. Veritatis asperiores maxime at.</li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae nulla minus exercitationem saepe, odit neque molestias ea nesciunt iusto quidem laborum culpa commodi, at ipsa cum obcaecati? Odit, vitae repellendus.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tile is-5 is-parent mb-5">
+        <div class="tile is-child box content">
+          <p class="title">For Artists...</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt ex doloremque culpa magni, excepturi quis temporibus corrupti voluptates suscipit laudantium numquam consectetur illo doloribus beatae. Quidem velit consequuntur modi est!</p>
+          <ul>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo cum impedit omnis, aut mollitia eum laudantium, saepe corrupti autem accusantium ipsa aliquam sint magni explicabo sit nesciunt consequatur vitae temporibus.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque dolor nisi suscipit dolores nihil et.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi aliquam delectus itaque, aperiam, dolorem ipsum quod aliquid eligendi officia maxime assumenda magni praesentium quisquam rem iusto. </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+    
+  </div>
+
+</section>

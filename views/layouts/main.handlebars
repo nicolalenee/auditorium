@@ -1,86 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Algo Rhythm</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-  <script src="https://kit.fontawesome.com/a8a5155182.js" crossorigin="anonymous"></script>
-  <link src="/stylesheets/styles.css" rel="stylesheet">
-</head>
-<body>
-  <nav class="navbar has-background-light" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="https://algorhythm.com">
-        <img src="/images/algorhythm-icon.png" width="112" height="28">
-      </a>
-  
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-  
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item">
-          Home
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algo Rhythm</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/a8a5155182.js" crossorigin="anonymous"></script>
+    <link href="/stylesheets/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar has-background-light" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <img src="/images/algorhythm-icon.png" width="112" height="28">
         </a>
-  
-        <a class="navbar-item">
-          Search
+    
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
         </a>
-  
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            More
+      </div>
+    
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/">
+            Home
           </a>
-  
-          <div class="navbar-dropdown">
-            <a class="navbar-item">
-              About
+    
+          <a class="navbar-item">
+            Search
+          </a>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              More
             </a>
-            <a class="navbar-item">
-              Upcoming features
-            </a>
-            <a class="navbar-item">
-              Contact
-            </a>
-            <hr class="navbar-divider">
-            <a class="navbar-item">
-              Settings
-            </a>
+    
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="#about">
+                About
+              </a>
+              <a class="navbar-item">
+                View Profile
+              </a>
+              <a class="navbar-item has-background-info has-text-white" href="/new-post">
+                Create a listing
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item" href="/settings">
+                Settings
+              </a>
+            </div>
+          </div>
+        </div>
+    
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              {{#if loggedIn}}
+              <a class="button is-danger">
+                Log Out
+              </a>
+              {{else}}
+              <a href="/signup" class="button is-info">
+                <strong>Sign up</strong>
+              </a>
+              <a href="/login" class="button is-light">
+                Log in
+              </a>
+              {{/if}}
+            </div>
           </div>
         </div>
       </div>
-  
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            {{#if loggedIn}}
-            <a class="button is-danger">
-              Log Out
-            </a>
-            {{else}}
-            <a href="/signup" class="button is-info">
-              <strong>Sign up</strong>
-            </a>
-            <a href="/login" class="button is-light">
-              Log in
-            </a>
-            {{/if}}
-          </div>
-        </div>
-      </div>
+    </nav>
+
+    <main class="is-flex is-flex-direction-column is-mobile">
+      {{{body}}}
+
+    </main>
+
+    {{#if loggedIn}}
+    <script src="/javascript/logout.js"></script>
+    {{/if}}
+  </body>
+
+  <footer class="footer has-background-info mt-6">
+    <div class="content has-text-centered has-text-white">
+      <p>AlgoRhythm is a licensed service. We are so cool, thank you for checking us out! Love, peace, and hairgrease.</p>
     </div>
-  </nav>
-
-  <main class="is-flex is-flex-direction-column is-mobile">
-    {{{body}}}
-
-  </main>
-  
-</body>
+  </footer>
 </html>

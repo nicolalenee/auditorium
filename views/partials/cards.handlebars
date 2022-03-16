@@ -1,0 +1,28 @@
+<!--cards-->
+<div class="container card-container m-2 new-card is-flex is-flex-direction-column">
+  <div class="card p-1">
+    <div class="has-background-light p-2 m-1 has-text-centered">
+      <a class="link" href="/post/{{id}}">
+        <h1 class="title has-text-info">{{title}}</h1>
+      </a>
+      <p class="subtitle">{{user.display_name}} | <strong>{{user.account_type}}</strong></p>
+    </div>
+    <div class="card-content">
+      <p class="is-size-7">
+        {{content}}
+      </p>
+    </div>
+  </div>
+
+  <div class="
+    card-footer
+    has-background-info 
+    is-flex 
+    is-flex-direction-row
+    is-justify-content-space-between
+    p-1
+    ">
+    <a class="help is-white" href="/post/{{id}}">View Post →</p>
+    <a class="help is-white" href="/post/{{id}}">{{created_at}}</a>
+  </div>
+</div>
