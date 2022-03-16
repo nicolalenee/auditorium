@@ -5,10 +5,11 @@ const profileRoutes = require('./profile-routes');
 const commentRoutes = require('./comment-routes');
 const homeRoutes = require('./home-routes');
 
+
+router.use('/', homeRoutes);
 router.use('/user', userRoutes);
 router.use('/post', postRoutes);
 router.use('/profile', profileRoutes);
 router.use('/comment', commentRoutes);
-router.use('/', homeRoutes);
 
 module.exports = router;
