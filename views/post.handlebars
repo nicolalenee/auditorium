@@ -1,19 +1,9 @@
-{{> post-info post}}
-
-{{#if loggedIn}}
-<form class="comment">
-  <div>
-    <textarea class="textarea" placeholder="...your comment here"></textarea>
+<section class="container is-flex is-flex-direction-column mt-6 mb-6">
+  <div class="has-text-centered">
+    <h1 class="title has-text-info">View Post</h1>
   </div>
+</section>
 
-  <div>
-    <button type="submit">Add comment</button>
-  </div>
-</form>
-{{/if}}
-
-{{> comments post.comments}}
-
-{{#if loggedIn}}
-<script src="/javascript/comment.js"></script>
-{{/if}}
+<section class="content is-flex is-flex-direction-column is-align-items-center mb-6">
+  {{> cards post}}
+</section>
