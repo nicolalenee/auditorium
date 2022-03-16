@@ -21,11 +21,11 @@
     {{#each posts as |post|}}
     <li>
       {{> post-info post}}
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+      <a href="/user-profile/edit/{{post.id}}" class="edit-link">Edit post</a>
     </li>
     {{/each}}
   </ol>
 </section>
 {{/if}}
 
-<script src="/javascript/new-post.js"></script>
+<script src="/js/new-post.js"></script>

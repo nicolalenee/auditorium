@@ -4,6 +4,14 @@
   </div>
 </section>
 
-<section class="content is-flex is-flex-direction-column is-align-items-center mb-6">
-  {{> cards post}}
-</section>
+  <div>
+    <button type="submit">Add comment</button>
+  </div>
+</form>
+{{/if}}
+
+{{> comments post.comments}}
+
+{{#if loggedIn}}
+<script src="/js/comment.js"></script>
+{{/if}}
