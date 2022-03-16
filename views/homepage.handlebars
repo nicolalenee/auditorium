@@ -1,4 +1,4 @@
-<section class="hero is-medium is-info hero-background">
+<section class="hero is-large is-info hero-background hero-image">
   <div class="hero-body has-text-white">
     <p class="title">
       ALGO RHYTHM
@@ -10,67 +10,17 @@
 </section>
 
 <section id="newest-posts" class="container">
-  <div class="content is-flex is-flex-direction-column is-justify-content-around p-6">
+  <div class="content is-flex is-flex-direction-column p-6">
     <div class="container newest-header">
       <h1 class="title">Newest Posts</h1>
     </div>
-    <div class="container newest-cards is-flex is-justify-content-around is-mobile is-flex-shrink-2">
-      <!--card #1-->
-      <div class="container card-container m-5">
-        <div class="card">
-          <div class="card-image">
-            <figure class="image is-3x3">
-              <img src="/images/placeholder-image.png" alt="Placeholder image">
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="content">
-              Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!--card #2-->
-      <div class="container card-container m-5">
-        <div class="card">
-          <div class="card-image">
-            <figure class="image is-3x3">
-              <img src="/images/placeholder-image.png" alt="Placeholder image">
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="content">
-              Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!--card #3-->
-      <div class="container card-container m-5">
-        <div class="card">
-          <div class="card-image">
-            <figure class="image is-3x3">
-              <img src="/images/placeholder-image.png" alt="Placeholder image">
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="content">
-              Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
-            </div>
-          </div>
-        </div>
-      </div>
-
-        <!--end cards here-->
-      </div>
-
+    <div class="container newest-cards is-flex is-justify-space-between is-mobile">
+      <!--cards handlebars template inserted here-->
+      {{#each posts  as |post|}}
+      {{> cards post }}
+      {{/each}}
     </div>
-    
     <!--end cards-->
-  </div>
-
 </section>
 
 <section id="about-section" class="container">

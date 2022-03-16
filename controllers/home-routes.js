@@ -1,13 +1,29 @@
-const res = require('express/lib/response');
-const { User } = require('../models');
-const { route } = require('./api');
-
 const router = require('express').Router();
+const {Post, User } = require('../models');
 
-// render the homepage
+// render the homepage and the most recent cards to the 'newest' section
 router.get('/', (req, res) => {
-  res.render('homepage');
+  Post.findAll({
+    order: [['id', 'DESC']],
+    limit: 3,
+    attributes: ['id', 'title', 'content', 'created_at'],
+    include: [
+      {
+        model: User,
+        attributes: ['display_name', 'account_type']
+      }
+    ]
+  }).then(dbPostData => {
+    const posts = dbPostData.map(post => post.get({ plain: true }));
+    res.render('homepage', {posts});
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  })
 });
+
+
 
 // render the login page
 router.get('/login', (req, res) => {

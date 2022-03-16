@@ -1,10 +1,15 @@
-/*import bulma*/
+
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
 
 /* hero background image*/
 .hero-image {
   background-image: url("../images/header-image2.jpg");
   background-attachment: fixed;
-  background-position: center;
+  background-position: center 80%;
   background-repeat: no-repeat;
+}
+
+.basis {
+  flex: 1 1 0;
+  width: 0;
 }
