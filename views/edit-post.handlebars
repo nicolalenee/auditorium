@@ -1,16 +1,13 @@
 <article>
-  <a href="/home"> &larr; Back to Home</a>
+  <a href="/user-profile"> &larr; Back to Your Profile</a>
   <h2>
     Edit Post
   </h2>
   <form class="edit-post-form">
     <div>
       <input name="post-title" type="text" value="{{post.title}}" />
-      <span>({{format_url post.post_url}})</span>
     </div>
     <div>
-      by you on {{format_date post.created_at}}
-      |
       <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
     </div>
     <button type="submit">Save post</button>
@@ -22,14 +19,13 @@
   <div>
     <textarea class="textarea"></textarea>
   </div>
-
   <div>
-    <button type="submit">add comment</button>
+    <button type="submit">Add comment</button>
   </div>
 </form>
 
 {{> comments post.comments}}
 
 <script src="/javascript/edit-post.js"></script>
-<script src="/javascript/delete-post.js"></script>
+<script src="/javascript/remove-post.js"></script>
 <script src="/javascript/comment.js"></script>
