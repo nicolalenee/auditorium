@@ -1,0 +1,67 @@
+<section class="hero is-large is-info hero-background hero-image">
+  <div class="hero-body has-text-white">
+    <p class="title">
+      ALGO RHYTHM
+    </p>
+    <p class="subtitle is-italic">
+      Connect and make musical magic happen
+    </p>
+  </div>
+</section>
+
+<section id="newest-posts" class="container">
+  <div class="content is-flex is-flex-direction-column p-6">
+    <div class="container newest-header">
+      <h1 class="title">Newest Posts</h1>
+    </div>
+    <div class="container newest-cards is-flex is-justify-space-between is-mobile">
+      <!--cards handlebars template inserted here-->
+      {{#each posts  as |post|}}
+      {{> cards post }}
+      {{/each}}
+    </div>
+    <!--end cards-->
+</section>
+
+<section id="about-section" class="container">
+  <div class="content is-flex is-flex-direction-column is-justify-content-around p-6 has-background-light">
+    <div class="container about-info is-flex is-flex-direction-column is-justify-content-center">
+      <h2 id="about" class="title">How We Help</h2>
+      <p>AlgoRhythm's mission is to help create a bridge of connection between venues and artists of all sorts within the music industry. We can even help create connections between artists themselves! AlgoRhythm believes that a community-focused approach best serves everyone in planning events that will bring enjoyment to all parties involved. Here are just a few ways that we can help:</p>
+    </div>
+    
+  </div>
+
+  <div class="container about-cards">
+    <div  class="tile is-ancestor is-flex is-justify-content-center">
+
+      <div class="tile is-5 is-parent mb-5">
+        <div class="tile is-child box content">
+          <p class="title">For Venues...</p>
+          <p>AlgoRhythm is a place for venues to be able to promote their business.</p>
+          <ul>
+            <li>Post about upcoming events.</li>
+            <li>Find acts for an upcoming event.</li>
+            <li>Make connections with vendors and artists in your <area shape="" coords="" href="" alt="">.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tile is-5 is-parent mb-5">
+        <div class="tile is-child box content">
+          <p class="title">For Artists...</p>
+          <p>AlgoRhythm makes it easy for artists to connect with other artists!</p>
+          <ul>
+            <li>Bands can post about their upcoming shows.</li>
+            <li>Post a talent request need for an upcoming show.</li>
+            <li>A way to search for upcoming events in your area.</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+    
+  </div>
+
+</section>

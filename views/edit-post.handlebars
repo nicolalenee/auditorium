@@ -1,0 +1,32 @@
+<article>
+  <a href="/user-profile"> &larr; Back to Your Profile</a>
+  <h2>
+    Edit Post
+  </h2>
+  <form class="edit-post-form">
+    <div>
+      <input name="post-title" type="text" value="{{post.title}}" />
+    </div>
+    <div>
+      <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
+    </div>
+    <button type="submit">Save post</button>
+    <button type="button" id="delete-post-btn">Delete post</button>
+  </form>
+</article>
+
+<form class="comment">
+  <div>
+    <textarea class="textarea"></textarea>
+  </div>
+  <div>
+    <button type="submit">Add comment</button>
+  </div>
+</form>
+
+{{> comments post.comments}}
+
+
+<script src="/js/edit-post.js"></script>
+<script src="/js/delete-post.js"></script>
+<script src="/js/comment.js"></script>
