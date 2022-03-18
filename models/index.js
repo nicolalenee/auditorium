@@ -3,6 +3,8 @@ const Profile = require('./Profile');
 const Post =  require('./Post');
 const Comment = require('./Comment');
 const Professions = require('./Professions');
+const Tag = require('./Tag');
+const PostTag = require('./PostTag');
 
 // Create Associations between Models
 User.hasMany(Post, {
@@ -37,6 +39,11 @@ Post.hasMany(Comment, {
     foreignKey: 'post_id'
 });
 
+Post.belongsToMany(Tag, {
+    through: PostTag,
+    foreignKey: 'post_tag'
+});
+
 Comment.belongsTo(User, {
     foreignKey: 'user_id'
 });
@@ -49,4 +56,17 @@ Professions.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-module.exports = { User, Profile, Post, Comment, Professions };
+Tag.belongsToMany(Post, {
+    through: PostTag,
+    foreignKey: 'tag_id'
+});
+
+module.exports = { 
+    User, 
+    Profile, 
+    Post, 
+    Comment, 
+    Professions,
+    Tag,
+    PostTag    
+};

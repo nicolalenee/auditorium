@@ -7,56 +7,56 @@ const userdata = [
         display_name: 'The Goat',
         username: 'thegoat',
         email: 'thegoat@gmail.com',
-        password: 'thegoat1234'
+        password: 'thego@t1234'
     },
     {
         account_type: 'Venue',
         display_name: 'The Shop',
         username: 'theshopindy',
         email: 'theshopindy@gmail.com',
-        password: 'theshop1234'
+        password: 'theshop!234'
     },
     {
         account_type: 'Artist',
         display_name: 'The One Man Band',
         username: 'iamtheman',
         email: 'onemanband@aol.com',
-        password: 'onemanband1234'
+        password: 'onem@nband1234'
     },
     {
         account_type: 'Artist',
         display_name: 'Broadzilla',
         username: 'broadzilla',
         email: 'thebroadzilla@yahoo.com',
-        password: 'broadzilla5678'
+        password: 'broadzill@5678'
     },
     {
         account_type: 'Venue',
         display_name: 'CreativeAffairs',
         username: 'creativeaffairs',
         email: 'thecreativeaffairs@msn.com',
-        password: 'creativeaffairs5678'
+        password: 'creative@ffairs5678'
     },
     {
         account_type: 'Venue',
         display_name: 'The Urban',
         username: 'urban',
         email: 'theurban@gmail.com',
-        password: 'urban7890'
+        password: 'urb@n7890'
     },
     {
         account_type: 'Artist',
         display_name: 'SocialExperiment',
         username: 'socialexperiment',
         email: 'socialexperiment@gmail.com',
-        password: 'socialexperiment1234'
+        password: 'soc!alexperiment1234'
     },
     {
         account_type: 'Artist',
         display_name: 'Team Magic',
         username: 'teammagic556',
         email: 'teammagic@yahoo.com',
-        password: 'teammagic5641'
+        password: 'teammag!c5641'
     }
 ];
 
