@@ -7,7 +7,7 @@ async function signupFormHandler(event) {
   const display_name = document
     .querySelector("#display-name-input")
     .value.trim();
-  const account_type = "Artist"; //document.querySelector("#")
+    const account_type = document.querySelector('input[name="account-type"]:checked').value;
 
   if (username && email && password) {
     const response = await fetch("/api/user", {
@@ -23,7 +23,7 @@ async function signupFormHandler(event) {
     });
 
     if (response.ok) {
-      document.location.replace("/homepage/");
+      document.location.replace("/");
     } else {
       alert(response.statusText);
     }
