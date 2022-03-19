@@ -3,17 +3,17 @@
 </section>
 
 <section id="bottom" class="container is-flex is-mobile m-auto p-5">
-  <div id="form-area" class="box p-4 is-flex is-flex-direction-to-column is-align-content-center has-background-light">
+  <form id="login-form" class="box p-4 is-flex is-flex-direction-to-column is-align-content-center has-background-light">
     <div class="field mb-3">
       <label class="label">Username</label>
       <div class="control">
-        <input class="input" type="text" id="username-input">
+        <input class="input" type="text" id="username-input" autocomplete="username">
       </div>
 
       <div class="field mb-3">
         <label class="label">Password</label>
         <div class="control">
-          <input class="input" type="password" id="username-input">
+          <input class="input" type="password" id="password-input" autocomplete="current-password">
         </div>
     </div>
 
@@ -22,11 +22,7 @@
     </div>
 
     <a class="link" href="/signup">Sign Up</a>
-  </div>
+  </form>
 
-<<<<<<< HEAD
-=======
-<script src="/js/signup.js"></script>
->>>>>>> 1e5422b6ab9937d41465e82120ca88aa6b69783b
 <script src="/js/login.js"></script>
 </section>
