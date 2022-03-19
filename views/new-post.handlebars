@@ -7,20 +7,20 @@
 
 <!-- bottom section-->
 <section class="content">
-  <form id="post-form" class="box container has-background-light">
+  <form id="new-post-form" class="box container has-background-light">
     <div class="field">
       <label class="label">Title</label>
-      <input class="input" type="text" placeholder="Title">
+      <input id="title-input" class="input" type="text" placeholder="Title">
     </div>
 
     <div class="field">
       <label class="label">Post</label>
-      <textarea class="textarea no-resize" placeholder="Be brief. Be detailed. Post what you need."></textarea>
+      <textarea id="content-input" class="textarea no-resize" placeholder="Be brief. Be detailed. Post what you need."></textarea>
     </div>
 
     <div class="is-flex field is-justify-content-space-between">
       <button id="post-cancel-button" class="button is-white">Cancel</button>
-      <button id="post-submit-button" class="button is-info">Post</button>
+      <button id="post-submit-button" class="button is-info" type="submit">Post</button>
     </div>
   </form>
 </section>
