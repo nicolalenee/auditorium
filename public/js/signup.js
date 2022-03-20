@@ -1,3 +1,16 @@
+//function to validate the password
+// const validatePassword = function(password, confirmedPassword) {
+//   if (password !== confirmedPassword) {
+//     console.log('Passwords do not match! Try again!');
+//     return false;
+//   }
+//   let regex = newRegex('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$');
+//   if (!password.match(regex)) {
+//     return false;
+//     }
+//   return true;
+// };
+
 async function signupFormHandler(event) {
   event.preventDefault();
 
