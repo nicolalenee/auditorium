@@ -101,4 +101,16 @@ router.get('/post/:id', (req, res) => {
     res.status(500).json(err);
   })
 });
+
+// allow users to logout
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  }
+  else {
+    res.status(404).end();
+  }
+});
 module.exports = router;
