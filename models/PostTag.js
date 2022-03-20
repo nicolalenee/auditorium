@@ -8,7 +8,7 @@ PostTag.init (
     {
         id: {
             type: DataTypes.INTEGER,
-            primarykey: true,
+            primaryKey: true,
             allowNull: false,
             autoIncretment: true
         },
