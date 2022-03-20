@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
 
-      res.render("homepage", { posts, loggedIn: req.session.loggedIn });
+      res.render("homepage", { posts, loggedIn: req.session.loggedIn});
     })
     .catch((err) => {
       console.log(err);
@@ -100,5 +100,17 @@ router.get('/post/:id', (req, res) => {
     console.log(err);
     res.status(500).json(err);
   })
+});
+
+// allow users to logout
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  }
+  else {
+    res.status(404).end();
+  }
 });
 module.exports = router;

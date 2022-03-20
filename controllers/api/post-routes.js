@@ -13,17 +13,23 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
-  Post.create({
-    title: req.body.title,
-    content: req.body.content,
-    user_id: req.body.user_id
-  })
-  .then(dbPostData => res.json(dbPostData))
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+router.post('/new-post', (req, res) => {
+  if(req.session) {
+    Post.create({
+      title: req.body.title,
+      content: req.body.content,
+      user_id: req.session.user_id
+    })
+    .then(dbPostData => {
+      res.json(dbPostData);
+      (console.log(dbPostData))
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+  }
+  
 });
 
 router.delete('/:id', (req, res) => {
