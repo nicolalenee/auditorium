@@ -45,12 +45,20 @@ router.get("/signup", (req, res) => {
 
 // render the new post page
 router.get("/new-post", (req, res) => {
-  res.render("new-post");
+  if (!req.session.loggedIn) {
+    res.redirect("/login");
+    return;
+  }
+  res.render("new-post", {loggedIn: req.session.loggedIn});
 });
 
 // render the settings page
 router.get("/settings", (req, res) => {
-  res.render("settings");
+  if(!req.session.loggedIn) {
+    res.redirect("/login");
+    return;
+  }
+  res.render("settings", {loggedIn: req.session.loggedIn});
 });
 
 // render the listings page
