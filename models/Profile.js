@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const Professions = require('./Professions');
 
 class Profile extends Model {}
 
@@ -10,14 +11,6 @@ Profile.init (
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
-        },
-        occupation: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        industry: {
-            type: DataTypes.STRING,
-            allowNull: false
         },
         band_name: {
             type: DataTypes.STRING,
@@ -47,6 +40,13 @@ Profile.init (
             type: DataTypes.INTEGER,
             references: {
                 model: 'user',
+                key: 'id'
+            }
+        },
+        profession_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'professions',
                 key: 'id'
             }
         }
