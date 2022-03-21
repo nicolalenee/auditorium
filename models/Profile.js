@@ -56,6 +56,7 @@ Profile.init (
         freezeTableName: true,
         underscored: true,
         modelName: 'profile'
+           
     }
 );
 
