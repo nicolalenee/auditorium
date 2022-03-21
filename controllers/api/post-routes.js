@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/new-post', (req, res) => {
+router.post('/', (req, res) => {
   if(req.session) {
     Post.create({
       title: req.body.title,
@@ -22,11 +22,10 @@ router.post('/new-post', (req, res) => {
     })
     .then(dbPostData => {
       res.json(dbPostData);
-      (console.log(dbPostData))
     })
     .catch(err => {
       console.log(err);
-      res.status(500).json(err);
+      res.status(400).json(err);
     });
   }
   
