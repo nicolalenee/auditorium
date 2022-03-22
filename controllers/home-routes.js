@@ -102,7 +102,7 @@ router.get('/post/:id', (req, res) => {
       return;
     }
     const post = dbPostData.get({ plain: true });
-    res.render('post', {post});
+    res.render('post', {post, loggedIn: req.session.loggedIn});
   })
   .catch(err => {
     console.log(err);
