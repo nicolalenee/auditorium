@@ -19,10 +19,6 @@ User.hasMany(Professions, {
     foreignKey: 'user_id'
 });
 
-// User.hasOne(Profile, {
-//     foreignKey: 'profile_id'
-// })
-
 Profile.belongsTo(User, {
     foreignKey: 'user_id'
 });
