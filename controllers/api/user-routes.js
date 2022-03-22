@@ -22,7 +22,13 @@ router.get('/:id', (req, res) => {
       where: {
         id: req.params.id
       },
-      attributes: ['id', 'account_type', 'display_name']
+      attributes: ['id', 'account_type', 'display_name'],
+      include: [
+        {
+          model: Profile,
+          attributes: ['id', 'band_name', 'location']
+        }
+      ] 
     })
       .then(dbUserData => {
         if (!dbUserData) {
