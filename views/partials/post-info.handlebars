@@ -1,26 +1,16 @@
-<div class="card">
-  <div class="card-content">
-  <h2>
+<article class="message is-light">
+  <div class="message-header">
+  <p>
     <a href="/post/{{id}}">
       <div class="title">{{title}}</div>
     </a>
-  </h2>
+  </p>
     <div class="content">Posted By {{user.username}} on {{format_date created_at}}</div>
-  </div>
-<p class="card">
-  {{content}}
-</p>
-</div>
-
-<article class="message is-dark">
-  <div class="message-header">
-    <p>{{post.title}} by {{user.username}}</p>
-    {{#if loggedIn}} 
+        {{#if loggedIn}} 
     <button class="delete" aria-label="delete"></button>
     {{/if}} 
   </div>
   <div class="message-body">
-    {{post.content}}
-    {{comments.length}}
+  {{content}}
   </div>
 </article>
