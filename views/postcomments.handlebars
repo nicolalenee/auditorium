@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-content">
+      <h2>
+        <a href="/post/{{post.id}}">
+          <div class="card-header">{{title}}</div>
+        </a>
+        </h2>
+        <div Posted By {{post.user.username}} on {{format_date post.created_at}}></div>
+        <p {{post.content}}></p>
+    </div>
+</div>
+<input type="hidden" name="post-id" value="{{post.id}}"/>
+  {{#if loggedIn}}
+    <form class="comment-form">
+      <div>
+        <textarea class="textarea" name="comment-body" placeholder="Enter comment here"></textarea>
+      </div>
+      <div>
+        <button class="button is-info" type="submit">Add Comment</button>
+      </div>
+    </form>
+  {{/if}}
+
+    {{> comments post.comments}}
+
+</article>
+
+{{#if loggedIn}}
+<script src="/js/comment.js"></script>
+<script src="/js/post.js"></script>
+{{/if}}

@@ -52,6 +52,14 @@ router.get("/new-post", (req, res) => {
   res.render("new-post", {loggedIn: req.session.loggedIn});
 });
 
+router.get("/comment", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect("/login");
+    return;
+  }
+  res.render("post", {loggedIn: req.session.loggedIn})
+});
+
 // render the settings page
 router.get("/settings", (req, res) => {
   if(!req.session.loggedIn) {
