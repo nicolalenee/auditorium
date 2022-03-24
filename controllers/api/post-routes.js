@@ -31,47 +31,6 @@ router.post('/', (req, res) => {
   
 });
 
-router.get('/:id', (req, res) => {
-  console.log('hit my route')
-  Post.findOne({
-    where: {
-      id: req.params.id
-    },
-    attributes: ['id', 'title', 'content', 'created_at'],
-    include: [
-      {
-        model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
-  })
-  .then(dbPostData => {
-    if(!dbPostData) {
-      console.log('no data found')
-      res.status(404).json({ message: 'No post was found with this id' });
-      return;
-    }
-    const post = dbPostData.get({ plain: true });
-    console.log('this is the post object: ', post)
-    res.render('post', {
-      post,
-      loggedIn: req.session.loggedIn
-    });
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
-});
-
 router.delete('/:id', (req, res) => {
   Post.destroy({
     where: {

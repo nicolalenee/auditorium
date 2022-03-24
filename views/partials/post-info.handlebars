@@ -1,16 +1,25 @@
-<article class="message is-light">
+
+   
+<article class="post">
+  <div class="title">
+    <a href="{{post_url}}" target="_blank">{{title}}</a>
+  </div>
+  <div class="meta">
+    by {{user.username}} on {{format_date created_at}}
+    |
+    <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+  </div>
+</article>
+
+<article class="message is-dark">
   <div class="message-header">
-  <p>
-    <a href="/post/{{id}}">
-      <div class="title">{{title}}</div>
-    </a>
-  </p>
-    <div class="content">Posted By {{user.username}} on {{format_date created_at}}</div>
-        {{#if loggedIn}} 
+    <p>{{post.title}} by {{user.username}}</p>
+    {{#if loggedIn}}
     <button class="delete" aria-label="delete"></button>
-    {{/if}} 
+    {{/if}}
   </div>
   <div class="message-body">
-  {{content}}
+    {{post.content}}
+    {{comments.length}}
   </div>
 </article>
