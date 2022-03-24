@@ -1,9 +1,8 @@
 <div class="content comments">
   {{#each comments}}
   <div class="comment">
-    <div>this is a comment</div>
     <div>
-      {{user.username}} on {{format_plural created_at}}
+      {{user.username}} on {{format_date created_at}}
     </div>
     <div class="text">
       {{comment_text}}
@@ -11,19 +10,3 @@
   </div>
   {{/each}}
 </div>
-
-  {{#if loggedIn}}
-    <form class="comment-form">
-      <div>
-        <textarea class="textarea" name="comment-body" placeholder="Enter comment here"></textarea>
-      </div>
-      <div>
-        <button class="button is-info" type="submit">Add Comment</button>
-      </div>
-    </form>
-  {{/if}}
-
-
-{{#if loggedIn}}
-<script src="/js/comment.js"></script>
-{{/if}}
