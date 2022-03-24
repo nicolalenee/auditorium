@@ -14,14 +14,13 @@ User.hasMany(Post, {
 User.hasMany(Comment, {
     foreignKey: 'user_id'
 });
-
-User.hasMany(Professions, {
-    foreignKey: 'user_id'
-});
-
+User.hasOne(Profile, {
+    forgeignKey: 'user_id'
+})
 Profile.belongsTo(User, {
     foreignKey: 'user_id'
 });
+
 
 Profile.hasMany(Post, {
     foreignKey: 'user_id'
@@ -52,14 +51,14 @@ Comment.belongsTo(Post, {
     foreignKey: 'post_id'
 });
 
-Professions.belongsTo(User, {
-    foreignKey: 'user_id'
-});
-
 Tag.belongsToMany(Post, {
     through: PostTag,
     foreignKey: 'tag_id'
 });
+
+Professions.hasMany(Profile, {
+    foreignKey: 'profile_id'
+})
 
 module.exports = { 
     User, 

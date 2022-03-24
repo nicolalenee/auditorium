@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Post, User, Profile, Comment } = require('../models');
+const {Post, User, Profile, Comment, Professions } = require('../models');
 
 // render the homepage and the most recent cards to the 'newest' section
 router.get("/", (req, res) => {
@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["display_name", "account_type"],
+        attributes: ["username", "account_type"],
       },
     ],
   })
@@ -25,43 +25,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get('/:id', (req, res) => {
-  Post.findOne({
-    where: {
-      id: req.params.id
-    },
-    attributes: ['id', 'title', 'content', 'created_at'],
-    include: [
-      {
-        model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
-  })
-  .then(dbPostData => {
-    if(!dbPostData) {
-      res.status(404).json({ message: 'No post was found with this id' });
-      return;
-    }
-    const post = dbPostData.get({ plain: true });
-    res.render('post', {
-      post,
-      loggedIn: req.session.loggedIn
-    });
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
-});
+
 
 // render the login page
 router.get("/login", (req, res) => {
@@ -167,4 +131,45 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+// user will view their own profile
+router.get('/profile', (req, res) => {
+  User.findOne({
+    where: {
+      id: req.session.user_id
+    },
+    attributes: ['id', 'display_name'],
+    include: [
+      {
+        model: Post,
+        attributes: ['id','title', 'content', 'created_at'],
+        include: [
+          {
+            model: User,
+            attributes: ['id', 'display_name', 'account_type']
+          }
+        ]
+      },
+      {
+        model: Profile,
+        attributes: ['id', 'band_name', 'location', 'website_url', 'bio', 'media', 'location', 'phone_number', 'user_id', 'profession_id']
+      }
+    ]
+  })
+  .then(dbProfileData => {
+    if (!req.session.loggedIn) {
+      res.redirect('/login');
+      return;
+    }
+    const userInfo = dbProfileData.get({ plain: true })
+    console.log(userInfo);
+    res.render('profile', {userInfo, loggedIn: req.session.loggedIn});
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  })
+});
+
+
 module.exports = router;

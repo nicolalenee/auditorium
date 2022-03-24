@@ -14,6 +14,14 @@ Professions.init (
         name: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        profile_id: {
+            type: DataTypes.INTEGER,
+            allowNull: true
         }
     },
     {
