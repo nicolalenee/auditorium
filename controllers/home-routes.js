@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Post, User, Profile } = require('../models');
+const {Post, User, Profile, Comment } = require('../models');
 
 // render the homepage and the most recent cards to the 'newest' section
 router.get("/", (req, res) => {
@@ -23,6 +23,44 @@ router.get("/", (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+});
+
+router.get('/:id', (req, res) => {
+  Post.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: ['id', 'title', 'content', 'created_at'],
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+  .then(dbPostData => {
+    if(!dbPostData) {
+      res.status(404).json({ message: 'No post was found with this id' });
+      return;
+    }
+    const post = dbPostData.get({ plain: true });
+    res.render('post', {
+      post,
+      loggedIn: req.session.loggedIn
+    });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 // render the login page
@@ -50,6 +88,14 @@ router.get("/new-post", (req, res) => {
     return;
   }
   res.render("new-post", {loggedIn: req.session.loggedIn});
+});
+
+router.get("/comment", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect("/login");
+    return;
+  }
+  res.render("postcomments", {loggedIn: req.session.loggedIn})
 });
 
 // render the settings page
