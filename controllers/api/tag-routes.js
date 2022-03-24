@@ -6,7 +6,7 @@ router.get ('/', (req, res) => {
   Tag.findAll({
     include: {
       model: Post,
-      attributes: ['post_']
+      attributes: ['title', 'content', 'post_id']
     }
   })
   .then(dbTagData => res.json(dbTagData))
@@ -23,7 +23,7 @@ router.get('/:id', (req, res) => {
     },
     include: {
       model: Post,
-      attributes: []
+      attributes: ['title', 'content', 'post_id']
     }
   })
     .then(dbTagData => res.json(dbTagData))
@@ -33,7 +33,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
   Tag.create({
     tag_name: req.body.tag_name
   })
@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   Tag.update(req.body, {
     where: {
       id: req.params.id
@@ -63,7 +63,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
   Tag.destroy({
     where: {
       id: req.params.id

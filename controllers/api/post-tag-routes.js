@@ -35,7 +35,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
   PostTag.create({
     tag_name: req.body.tag_name
   })
@@ -46,7 +46,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   PostTag.update(req.body, {
     where: {
       id: req.params.id
@@ -65,7 +65,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
   PostTag.destroy({
     where: {
       id: req.params.id
