@@ -23,7 +23,7 @@ async function signupFormHandler(event) {
   const account_type = document.querySelector('input[name="account-type"]:checked').value;
 
   if (username && email && password) {
-    const response = await fetch("/api/user", {
+    const response = await fetch("/user", {
       method: "post",
       body: JSON.stringify({
         display_name,

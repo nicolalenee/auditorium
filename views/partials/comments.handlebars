@@ -1,12 +1,17 @@
-<div class="content comments">
-  {{#each comments}}
-  <div class="comment">
-    <div>
-      {{user.username}} on {{format_date created_at}}
-    </div>
-    <div class="text">
-      {{comment_text}}
-    </div>
+<div class="content comments mt-3 ml-6 mr-6 border-top">
+  
+  <h1 class="title has-text-centered mt-2 has-text-info">Comments</h1>
+ {{#each comments}}
+ <div class="comment">
+  <div class="card-content has-background-light is-size-6 mb-6 mt-6">
+   <div class="content">
+   {{comment_text}}
   </div>
-  {{/each}}
+    <div class="card">
+    <div class="content card-footer-item has-background-info is-flex is-flex-direction-row is-justify-content-space-between has-text-white is-size-7">
+   {{user.username}} on {{format_date created_at}}
+  </div>
+  </div>
+ </div>
+ {{/each}}
 </div>

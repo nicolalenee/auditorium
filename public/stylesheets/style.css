@@ -17,3 +17,9 @@
 .list {
   list-style: none;
 }
+.border-top {
+  border-top: 2px solid lightgrey;
+}
+.resize-none {
+  resize: none;
+}
