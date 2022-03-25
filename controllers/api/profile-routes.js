@@ -3,6 +3,7 @@ const { Profile } = require('../../models');
 const  filterByQuery = require('../../lib/profiles');
 const { profiles } = require('../../seeds/profile-seeds');
 const { sequelize } = require('../../models/User');
+const withAuth = require('../../utils/auth')
 
 
 
@@ -30,7 +31,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
   Profile.create({
     occupation: req.body.occupation,
     industry: req.body.industry,
@@ -49,7 +50,7 @@ router.post('/', (req, res) => {
   });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   Profile.update(req.body, {
     individualHooks: true,
     where: {
