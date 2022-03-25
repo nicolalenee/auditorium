@@ -2,17 +2,17 @@
 <div class="container card-container m-2 new-card is-flex is-flex-direction-column">
   <div class="card p-1">
     <div class="has-background-light p-2 m-1 has-text-centered">
-      <a class="link" href="/api/post/{{id}}">
+      <a class="link" href="/post/{{id}}">
         <h1 class="title has-text-info">{{title}}</h1>
       </a>
-      <p class="subtitle">{{user.display_name}} | <strong>{{user.account_type}}</strong></p>
+      <p class="subtitle">{{user.username}} | <strong>{{user.account_type}}</strong></p>
     </div>
     <div class="card-content">
       <p class="is-size-7">
         {{content}}
       </p>
       <p class="is-size-7">
-        {{user.profile.location}}
+        {{post.user.profile.location}}
       </p>
     </div>
   </div>
@@ -25,7 +25,7 @@
     is-justify-content-space-between
     p-1
     ">
-    <a class="help is-white" href="/api/post/{{id}}">View Post →</p>
-    <a class="help is-white" href="/api/post/{{id}}">{{format_date created_at}}</a>
+    <a class="help is-white" href="/post/{{id}}">View Post →</p>
+    <a class="help is-white" href="/post/{{id}}">{{format_date created_at}}</a>
   </div>
 </div>

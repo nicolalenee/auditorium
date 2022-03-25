@@ -2,55 +2,72 @@ const { Professions } = require('../models');
 
 const professionsdata = [
     {
-        name: 'Photographer'
+        name: 'Photographer',
+        id: 1
     },
     {
-        name: 'Videographer'
+        name: 'Videographer',
+        id: 2
     },
     {
-        name: 'Artist Manager'
+        name: 'Artist Manager',
+        id: 3
     },
     {
-        name: 'Booking Agent'
+        name: 'Booking Agent',
+        id: 4
     },
     {
-        name: 'Manager'
+        name: 'Manager',
+        id: 5
     },
     {
-        name: 'Journalist'
+        name: 'Journalist',
+        id: 6
     },
     {
-        name: 'Graphic Designer'
+        name: 'Graphic Designer',
+        id: 7
     },
     {
-        name: 'Sound Engineer'
+        name: 'Sound Engineer',
+        id: 8
     },
     {
-        name: 'Web Developer'
+        name: 'Web Developer',
+        id: 9
     },
     {
-        name: 'Singer'
+        name: 'Singer',
+        id: 10
     },
     {
-        name: 'Musician'
+        name: 'Musician',
+        id: 11
     },
     {
-        name: 'Song Writer'
+        name: 'Song Writer',
+        id: 12
     },
     {
-        name: 'Choreographer'
+        name: 'Choreographer',
+        id: 13
     },
     {
-        name: 'Drummer'
+        name: 'Drummer',
+        id: 14
     },
     {
-        name: 'Guitarist'
+        name: 'Guitarist',
+        id: 15
     },
     {
-        name: 'Bass Player'
+        name: 'Bass Player',
+        id: 16
     },
     {
-        name: 'Publicist'
+        name: 'Publicist',
+        id: 17
     }
 ];
 

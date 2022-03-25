@@ -6,21 +6,6 @@ const { sequelize } = require('../../models/User');
 const withAuth = require('../../utils/auth')
 
 
-
-router.get('/', (req, res) => {
-  Profile.findAll({
-    attributes: [display_name, location, occupation,
-    [sequelize.literal('(SELECT COUNT(*) FROM location WHERE location = profile.location')]
-  ]
-    
-  });
-  if (req.query) {
-    results = filterByQuery(req.query, results);
-  }
-  console.log(results);
-  res.json(results);
-});
-
 router.get('/', (req, res) => {
   Profile.findAll({
   })
@@ -35,13 +20,13 @@ router.post('/', withAuth, (req, res) => {
   Profile.create({
     occupation: req.body.occupation,
     industry: req.body.industry,
-    display_name: req.body.band_name,
+    display_name: req.body.display_name,
     website_url: req.body.website_url,
     bio: req.body.bio,
     media: req.body.media,
     location: req.body.location,
     phone_number: req.body.phone_number,
-    user_id: req.body.user_id
+    user_id: req.session.user_id
   })
   .then(dbProfileData => res.json(dbProfileData))
   .catch(err => {
