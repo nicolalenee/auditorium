@@ -9,7 +9,7 @@ const withAuth = require('../../utils/auth')
 
 router.get('/', (req, res) => {
   Profile.findAll({
-    attributes: [band_name, location, occupation,
+    attributes: [display_name, location, occupation,
     [sequelize.literal('(SELECT COUNT(*) FROM location WHERE location = profile.location')]
   ]
     
@@ -35,7 +35,7 @@ router.post('/', withAuth, (req, res) => {
   Profile.create({
     occupation: req.body.occupation,
     industry: req.body.industry,
-    band_name: req.body.band_name,
+    display_name: req.body.band_name,
     website_url: req.body.website_url,
     bio: req.body.bio,
     media: req.body.media,
