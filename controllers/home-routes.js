@@ -26,8 +26,6 @@ router.get("/", (req, res) => {
     });
 });
 
-
-
 // render the login page
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {

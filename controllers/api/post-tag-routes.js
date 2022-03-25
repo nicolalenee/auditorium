@@ -35,7 +35,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.post('/', withAuth, (req, res) => {
+router.post('/', (req, res) => {
   PostTag.create({
     tag_name: req.body.tag_name
   })

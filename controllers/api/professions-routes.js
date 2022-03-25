@@ -6,7 +6,7 @@ router.get ('/', (req, res) => {
   Professions.findAll({
     include: {
       model: Post,
-      attributes: ['title', 'content', 'post_id']
+      attributes: ['title', 'content', 'id']
     }
   })
   .then(dbProfessionsData => res.json(dbProfessionsData))
@@ -23,7 +23,7 @@ router.get('/:id', (req, res) => {
     },
     include: {
       model: Post,
-      attributes: ['title', 'content', 'post_id']
+      attributes: ['title', 'content', 'id']
     }
   })
     .then(dbProfessionsData => res.json(dbProfessionsData))
@@ -70,3 +70,5 @@ router.delete('/:id', withAuth, (req, res) => {
     res.status(500).json(err);
   });
 });
+
+module.exports = router;
