@@ -17,18 +17,26 @@ Professions.init (
         },
         user_id: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: true,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
         },
         profile_id: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: true,
+            references: {
+                model: 'profile',
+                key: 'id'
+            }
         }
     },
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'profession'
+        modelName: 'professions'
     }
 );
 

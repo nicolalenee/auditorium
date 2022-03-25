@@ -10,12 +10,13 @@ router.get("/", (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["username", "account_type"]
+        attributes: ['id', 'username']
       },
     ],
   })
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
+      console.log(posts)
 
       res.render("homepage", { posts, loggedIn: req.session.loggedIn});
     })
@@ -146,7 +147,7 @@ router.get('/profile', (req, res) => {
         include: [
           {
             model: User,
-            attributes: ['id', 'display_name', 'account_type']
+            attributes: ['id', 'display_name']
           }
         ]
       },
