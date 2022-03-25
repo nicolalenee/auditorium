@@ -20,10 +20,10 @@ async function signupFormHandler(event) {
   const display_name = document
     .querySelector("#display-name-input")
     .value.trim();
-    const account_type = document.querySelector('input[name="account-type"]:checked').value;
+  const account_type = document.querySelector('input[name="account-type"]:checked').value;
 
   if (username && email && password) {
-    const response = await fetch("/api/user", {
+    const response = await fetch("/user", {
       method: "post",
       body: JSON.stringify({
         display_name,

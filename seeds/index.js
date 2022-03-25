@@ -3,6 +3,8 @@ const seedProfiles = require('./profile-seeds');
 const seedPosts = require('./post-seeds');
 const seedComments = require('./comment-seeds');
 const seedProfessions = require('./profession-seeds');
+const seedPostTags = require('./posttag-seeds');
+const seedTags = require('./tag-seeds');
 
 const sequelize = require('../config/connection');
 
@@ -18,11 +20,17 @@ const seedAll = async () => {
 
     await seedPosts();
     console.log('--------------');
+    
+    await seedTags();
+    console.log('--------------');
 
     await seedComments();
     console.log('--------------');
 
     await seedProfessions();
+    console.log('--------------');
+
+    await seedPostTags();
     console.log('--------------');
 
     process.exit(0);

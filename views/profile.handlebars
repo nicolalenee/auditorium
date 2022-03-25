@@ -1,0 +1,15 @@
+<section id="title-section" class="section">
+  <h1 class="title has-text-centered has-text-info">Welcome, <i>{{userInfo.username}}!</i></h1>
+</section>
+
+<section id="profile-columns" class="columns is-flex m-4 has-background-light">
+  <div id="sidebar-left" class="column has-background-warning m-2">
+    <h1 class="title">{{UserInfo.profile.display_name}}</h1>
+  </div>
+  <div id="content-right" class="column has-background-danger is-two-thirds m-2">
+    <h2 class="title has-text-centered has-text-info">Your Listings</h2>
+    {{#each userInfo.posts as |post|}}
+    {{> cards post}}
+    {{/each}}
+  </div>
+</section>

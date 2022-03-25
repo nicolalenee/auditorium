@@ -19,17 +19,11 @@ User.init (
         },
         account_type: {
             type: DataTypes.STRING,
-            allowNull: false
-        },
-        display_name: {
-            type: DataTypes.STRING,
             allowNull: false,
-            unique: true
         },
         username: {
             type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
+            allowNull: false
         },
         email: {
             type: DataTypes.STRING,
@@ -43,7 +37,7 @@ User.init (
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [8]
+                len: [6]
             }
         }
     },
