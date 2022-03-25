@@ -7,9 +7,6 @@ const Tag = require('./Tag');
 const PostTag = require('./PostTag');
 
 // Create Associations between Models
-User.hasOne(Profile, {
-    foreignKey: 'user_id'
-})
 
 User.hasMany(Post, {
     foreignKey: 'user_id'
@@ -68,6 +65,9 @@ User.hasMany(Comment, {
     foreignKey: 'user_id'
 });
 
+User.hasOne(Profile, {
+    foreignKey: 'user_id'
+})
 
 Profile.belongsTo(User, {
     foreignKey: 'user_id'
