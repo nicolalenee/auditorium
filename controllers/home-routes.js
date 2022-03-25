@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
     include: [
       {
         model: User,
-        attributes: ['id', 'username']
+        attributes: ['id', 'username', 'account_type']
       },
     ],
   })
@@ -60,7 +60,7 @@ router.get("/comment", (req, res) => {
     res.redirect("/login");
     return;
   }
-  res.render("postcomments", {loggedIn: req.session.loggedIn})
+  res.render("post", {loggedIn: req.session.loggedIn})
 });
 
 // render the settings page
@@ -94,32 +94,6 @@ router.get('/listings', (req, res) => {
   })
 })
 
-
-router.get('/post/:id', (req, res) => {
-  Post.findOne({
-    where: {
-      id: req.params.id
-    },
-    attributes: ['id', 'title', 'content', 'created_at'],
-    include: [
-      {
-        model: User,
-        attribute: ['display_name', 'account_type']
-      }
-    ]
-  }).then(dbPostData => {
-    if (!dbPostData) {
-      res.status(404).json({ message: 'No post found with this id'});
-      return;
-    }
-    const post = dbPostData.get({ plain: true });
-    res.render('post', {post, loggedIn: req.session.loggedIn});
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  })
-});
 
 // allow users to logout
 router.post('/logout', (req, res) => {
