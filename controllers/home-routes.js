@@ -81,7 +81,7 @@ router.get('/listings', (req, res) => {
     include: [
       {
         model: User,
-        attribute: ['display_name', 'account_type']
+        attribute: ['id','username', 'account_type']
       }
     ]
   }).then(dbPostData => {
@@ -113,7 +113,7 @@ router.get('/profile', (req, res) => {
     where: {
       id: req.session.user_id
     },
-    attributes: ['id', 'display_name'],
+    attributes: ['id', 'username', 'account_type'],
     include: [
       {
         model: Post,
@@ -121,13 +121,13 @@ router.get('/profile', (req, res) => {
         include: [
           {
             model: User,
-            attributes: ['id', 'display_name']
+            attributes: ['id', 'username', 'account_type']
           }
         ]
       },
       {
         model: Profile,
-        attributes: ['id', 'band_name', 'location', 'website_url', 'bio', 'media', 'location', 'phone_number', 'user_id', 'profession_id']
+        attributes: ['id', 'display_name', 'location', 'website_url', 'bio', 'media', 'location', 'phone_number', 'user_id']
       }
     ]
   })
@@ -137,6 +137,7 @@ router.get('/profile', (req, res) => {
       return;
     }
     const userInfo = dbProfileData.get({ plain: true })
+    console.log(userInfo)
     console.log(userInfo);
     res.render('profile', {userInfo, loggedIn: req.session.loggedIn});
   })

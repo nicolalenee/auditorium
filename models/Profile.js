@@ -11,7 +11,7 @@ Profile.init (
             primaryKey: true,
             autoIncrement: true
         },
-        band_name: {
+        display_name: {
             type: DataTypes.STRING,
             allowNull: true
         },
