@@ -79,6 +79,26 @@ const profiledata = [
         phone_number: '505-222-1234',
         user_id: 8,
         profession_id: 3
+    },
+    {
+        display_name: 'Photos by Ken',
+        website_url: 'https://theoatmeal.com/',
+        bio: 'Jarlsberg edam cheesy feet. Croque monsieur everyone loves blue castello squirty cheese taleggio cottage cheese danish fontina cheese and biscuits. Queso the big cheese taleggio halloumi rubber cheese everyone loves cheese strings camembert de normandie.',
+        media: 'http://photosbyken.com',
+        location: 'San Diego',
+        phone_number: '555-456-8521',
+        user_id: 9,
+        profession_id: 1
+    },
+    {
+        display_name: 'Killers Bar',
+        website_url: 'https://codepen.io/akm2/full/AGgarW',
+        bio: 'Hard cheese feta camembert de normandie. Danish fontina cheesy feet stinking bishop ricotta cheesy grin danish fontina caerphilly fondue. Cheese and biscuits say cheese cheddar melted cheese cheeseburger pecorino squirty cheese melted cheese. Melted cheese paneer cheese and wine cheese slices say cheese.',
+        media: 'http://killerbar.com',
+        location: 'Jacksonville',
+        phone_number: '555-852-6321',
+        user_id: 10,
+        profession_id: 17
     }
 ];
 
