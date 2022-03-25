@@ -6,7 +6,7 @@ router.get ('/', (req, res) => {
   Tag.findAll({
     include: {
       model: Post,
-      attributes: ['title', 'content', 'post_id']
+      attributes: ['title', 'content', 'id']
     }
   })
   .then(dbTagData => res.json(dbTagData))
@@ -23,7 +23,7 @@ router.get('/:id', (req, res) => {
     },
     include: {
       model: Post,
-      attributes: ['title', 'content', 'post_id']
+      attributes: ['title', 'content', 'id']
     }
   })
     .then(dbTagData => res.json(dbTagData))
