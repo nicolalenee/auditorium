@@ -3,12 +3,15 @@
   <div id="sidebar-left" class="column has-background-light is-two-fifths">
     <h1 class="title has-text-centered">{{userInfo.profile.display_name}}</h1>
     <h2 class="subtitle has-text-centered">Profile Details</h2>
+
+    {{#if userInfo.profile.media}}
     <!--media box-->
     <div id="media-box" class="box">
       <div class="image is-flex">
-        <iframe>{{userInfo.profile.media}}</iframe>
+        <img src="{{userInfo.profile.media}}" alt="user media"/>
       </div>
     </div>
+    {{/if}}
 
     <!--bio-->
     <div class="box tile is-flex is-flex-direction-column">

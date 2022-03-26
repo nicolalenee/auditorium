@@ -154,6 +154,11 @@ router.post('/logout', (req, res) => {
 
 // user will view their own profile
 router.get('/profile', (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect("/login");
+    return;
+  }
+  
   User.findOne({
     where: {
       id: req.session.user_id
