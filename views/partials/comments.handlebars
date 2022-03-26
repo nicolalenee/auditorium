@@ -8,10 +8,16 @@
    {{comment_text}}
   </div>
     <div class="card">
-    <div class="content card-footer-item has-background-info is-flex is-flex-direction-row is-justify-content-space-between has-text-white is-size-7">
-   {{user.username}} on {{format_date created_at}}
+      <div class="content card-footer-item has-background-info is-flex is-flex-direction-row is-justify-content-space-between has-text-white is-size-7">
+        {{user.username}} on {{format_date created_at}}
+        <button class="button delete-commment-btn is-danger is-small is-responsive">
+          <span>Delete</span>
+          <span class="icon is-small">
+            <i class="fas fa-times"></i>
+          </span>
+        </button>
+      </div>
+    </div>
   </div>
-  </div>
- </div>
  {{/each}}
 </div>
