@@ -1,15 +1,46 @@
-<section id="title-section" class="section">
-  <h1 class="title has-text-centered has-text-info">Welcome, <i>{{userInfo.username}}!</i></h1>
-</section>
+<section id="profile-wrapper" class="section m-2">
+  <section id="profile-columns" class="columns is-flex">
+  <div id="sidebar-left" class="column has-background-light is-two-fifths">
+    <h1 class="title has-text-centered">{{userInfo.profile.display_name}}</h1>
+    <h2 class="subtitle has-text-centered">Profile Details</h2>
+    <!--media box-->
+    <div id="media-box" class="box">
+      <div class="image is-flex">
+        <iframe>{{userInfo.profile.media}}</iframe>
+      </div>
+    </div>
 
-<section id="profile-columns" class="columns is-flex m-4 has-background-light">
-  <div id="sidebar-left" class="column has-background-warning m-2">
-    <h1 class="title">{{UserInfo.profile.display_name}}</h1>
+    <!--bio-->
+    <div class="box tile is-flex is-flex-direction-column">
+      <h2 class="subtitle has-text-centered has-background-info has-text-white"><b>Bio</b></h2>
+      <p class="is-size-6 has-text-justified">{{userInfo.profile.bio}}</p>
+
+    </div>
+
+    <!--profile details-->
+    <div class="box tile is-flex is-flex-direction-column">
+      <!--location-->
+      <p class="is-size-5"><b>Location: </b>{{userInfo.profile.location}}</p>
+      <br>
+      <!--website-->
+      <p class="is-size-5"><b>Site: </b><a href="{{userInfo.profile.website_url}}">{{userInfo.profile.website_url}}</a></p>
+      <br>
+      <!--phone number-->
+      <p class="is-size-5"><b>Phone: </b>{{userInfo.profile.phone_number}}</p>
+    </div>
+    <div class="button-area is-flex is-justify-content-center">
+      <button id="update-button" class="button is-flex is-info is-align-self-center" type="button" onclick="location.href='/settings';">
+        Update Your Profile
+      </button>
+    </div>
+    <!--end the left column-->
   </div>
-  <div id="content-right" class="column has-background-danger is-two-thirds m-2">
+  <div id="content-right" class="column m-2">
     <h2 class="title has-text-centered has-text-info">Your Listings</h2>
     {{#each userInfo.posts as |post|}}
     {{> cards post}}
     {{/each}}
   </div>
+</section>
+
 </section>
