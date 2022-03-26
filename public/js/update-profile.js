@@ -6,7 +6,7 @@ async function updateProfileClickHandler(event) {
     const phone_number = document.querySelector('#contact-number').value.trim();
     const website_url = document.querySelector('#website-url').value.trim();
     const bio = document.querySelector('#bio').value.trim();
-    const media = document.querySelector('input[name="file-input"]').value.trim();
+    const media = document.querySelector('#media').value.trim();
 
     const response = await fetch('api/profile', {
         method: 'PUT',
@@ -22,7 +22,7 @@ async function updateProfileClickHandler(event) {
     });
 
     if (response.ok) {
-        document.location.replace('/update-profile');
+        document.location.replace('/profile');
     }
     else {
         alert(response.statusText);

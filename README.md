@@ -21,7 +21,7 @@
   You may use the application as an Artist or a Venue. Artists can use the app to connect with other artists and venues. Venues can use the app to connect with artists or promote events.
 
   ## Credits:
-  Nicola Marble, Kelly Dingman, Thomas Siffermann, and Corey Gettig. Special thanks to our instructors Matt and Qing as well.
+  Nicola Marble, Kelly Dingman, Thomas Siffermann, and Corey Gettig. Special thanks to our instructors Matt and Qing as well. 💗
 
   ## Contribution:
   N/A
