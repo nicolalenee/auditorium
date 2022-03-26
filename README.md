@@ -30,6 +30,8 @@
   No tests necessary
 
   ## Contact:
-  If you have any questions, please feel free to contact me via email or my gitHub!
-  - Email: [coreygettig7@gmail.com](sendto:user@example.com)
-  - Github: [coreygettig7](https://github.com/coreygettig7)
+  If you have any questions, please feel free to contact us at Github!
+  - Corey: [coreygettig7](https://github.com/coreygettig7)
+  - Nicola: [nicolalenee](https://github.com/nicolalenee)
+  - Kelly: [kdingman](https://github.com/kdingman)
+  - Thomas: [Thoma77s](https://github.com/Thoma77s)
