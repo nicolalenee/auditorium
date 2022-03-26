@@ -58,6 +58,20 @@ const userdata = [
         email: 'teammagic@yahoo.com',
         password: 'teammag!c5641'
     }
+    ,   {
+        account_type: 'Venue',
+        display_name: 'Photos by Ken',
+        username: 'kensphotos56',
+        email: 'kensphotos@email.com',
+        password: 'kensph0t05!'
+    },
+    {
+        account_type: 'Venue',
+        display_name: 'Killers Bar',
+        username: 'theKillerBar',
+        email: 'killerbar@email.com',
+        password: 'k!ll3rb@r05'
+    },
 ];
 
 const seedUsers = () => User.bulkCreate(userdata, {individualHooks: true});
