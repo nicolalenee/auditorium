@@ -8,7 +8,7 @@
 
 <section id="bottom" class="container is-flex is-flex-row is-mobile p-5">
 <!--form begin here-->
-<div id="form-area" class="container box p-2 is-flex is-flex-direction-column has-background-light">
+<form id="form-area" class="container form box p-2 is-flex is-flex-direction-column has-background-light">
 
   <!--industry/profession-->
   <div class="field mb-3">
@@ -19,12 +19,9 @@
 
         <!--this list will be pulled from a table in the database that gets updated as users enter in new values-->
         <datalist id="professions">
-          <option value="Restaurant"></option>
-          <option value="Lounge"></option>
-          <option value="Theatre"></option>
-          <option value="Band"></option>
-          <option value="Photographer"></option>
-          <option value="Videographer"></option>
+          {{#each professions as |profession|}}
+            <option value="{{profession.name}}"></option>
+          {{/each}}
         </datalist>
 
         <p class="help">Enter or select a profession that describes your talent. Now is the time to define what you do best!</p>
@@ -58,7 +55,7 @@
   <!--bio-->
   <div class="field mb-3">
     <label class="label">Bio</label>
-    <textarea class="textarea no-resize" id="bio"></textarea>
+    <textarea class="textarea resize-none" id="bio"></textarea>
     <p class="help">Talk about yourself! Let the people know what you're all about!</p>
   </div>
 
@@ -93,13 +90,8 @@
 
   </div>
 <!-- end form-->
-</div>
 
-</section>
-
-
-    </form>
-
-  </div>
+  </form>
+  <script src="/js/update-profile.js"></script>
   
 </section>

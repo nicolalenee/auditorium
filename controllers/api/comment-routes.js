@@ -37,23 +37,26 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', withAuth, (req, res) => {
+  if(req.session) {
   Comment.create({
     id: req.body.id,
-    comment_text: req.body.title,
-    post_id: req.body.content,
-    user_id: req.body.user_id
+    comment_text: req.body.comment_text,
+    post_id: req.body.post_id,
+    user_id: req.session.user_id
   })
   .then(dbCommentData => res.json(dbCommentData))
   .catch(err => {
     console.log(err);
     res.status(500).json(err);
   });
+}
 });
 
 router.delete('/:id', withAuth, (req, res) => {
   Comment.destroy({
     where: {
-      id: req.params.id
+      id: req.params.id,
+      user_id: req.session.user_id
     }
   })
     .then(dbCommentData => {

@@ -11,15 +11,7 @@ Profile.init (
             primaryKey: true,
             autoIncrement: true
         },
-        occupation: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        industry: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        band_name: {
+        display_name: {
             type: DataTypes.STRING,
             allowNull: true
         },
@@ -56,6 +48,7 @@ Profile.init (
         freezeTableName: true,
         underscored: true,
         modelName: 'profile'
+           
     }
 );
 

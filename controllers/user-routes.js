@@ -1,7 +1,6 @@
 const router = require('express').Router();
-const { User, Profile } = require('../../models');
-const { sequelize } = require('../../models/User');
-const withAuth = require('../../utils/auth');
+const { User, Profile } = require('../models');
+const withAuth = require('../utils/auth');
 
 // GET 
 router.get('/', (req, res) => {
@@ -22,7 +21,13 @@ router.get('/:id', (req, res) => {
       where: {
         id: req.params.id
       },
-      attributes: ['id', 'account_type', 'display_name']
+      attributes: ['id', 'account_type', 'display_name'],
+      include: [
+        {
+          model: Profile,
+          attributes: ['id', 'band_name', 'location']
+        }
+      ] 
     })
       .then(dbUserData => {
         if (!dbUserData) {

@@ -8,27 +8,28 @@ PostTag.init (
     {
         id: {
             type: DataTypes.INTEGER,
-            primaryKey: true,
             allowNull: false,
+            primaryKey: true,
             autoIncretment: true
         },
         post_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'Post',
+                model: 'post',
                 key: 'id'
             }
         },
         tag_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'Tag',
+                model: 'tag',
                 key: 'id'
             }
         }
     },
     {
         sequelize,
+        timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'post_tag'
