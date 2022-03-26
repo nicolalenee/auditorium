@@ -120,7 +120,7 @@ router.get("/settings", (req, res) => {
 router.get('/listings', (req, res) => {
 
   Post.findAll({
-    order: [['id', 'DESC']],
+    order: [['id', 'ASC']],
     attributes: ['id', 'title', 'content', 'created_at'],
     include: [
       {
@@ -186,8 +186,8 @@ router.get('/profile', (req, res) => {
       res.redirect('/login');
       return;
     }
+  
     const userInfo = dbProfileData.get({ plain: true })
-    console.log(userInfo)
     console.log(userInfo);
     res.render('profile', {userInfo, loggedIn: req.session.loggedIn});
   })
