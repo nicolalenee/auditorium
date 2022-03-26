@@ -97,13 +97,23 @@ router.get("/comment", (req, res) => {
   res.render("post", {loggedIn: req.session.loggedIn})
 });
 
-// render the settings page
+// render the settings page and load the professions datalist menu
 router.get("/settings", (req, res) => {
   if(!req.session.loggedIn) {
     res.redirect("/login");
     return;
   }
-  res.render("settings", {loggedIn: req.session.loggedIn});
+
+  Professions.findAll({
+    attributes: ['id', 'name']
+  }).then(dbProfessionsData => {
+    const professions = dbProfessionsData.map(profession => profession.get({ plain: true }))
+    res.render('settings', {professions, loggedIn: req.session.loggedIn});
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  })
+  
 });
 
 // render the listings page
@@ -144,6 +154,11 @@ router.post('/logout', (req, res) => {
 
 // user will view their own profile
 router.get('/profile', (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect("/login");
+    return;
+  }
+  
   User.findOne({
     where: {
       id: req.session.user_id
