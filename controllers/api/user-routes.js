@@ -1,52 +1,9 @@
 const router = require('express').Router();
-const { User, Post, Profile } = require('../models');
-const withAuth = require('../utils/auth');
+const { User, Post, Profile } = require('../../models');
+const withAuth = require('../../utils/auth');
 
-// GET 
-router.get('/', (req, res) => {
-  User.findAll({
-    attributes: { exclude: ['password'] }
-  })
-    .then(dbUserData => res.json(dbUserData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
 
-// GET 1 -> needs to be fixed 
-router.get('/:id', (req, res) => {
-    User.findOne({
-      attributes: { exclude: ['password']},
-      where: {
-        id: req.params.id
-      },
-      attributes: ['id', 'account_type', 'username'],
-      include: [
-        {
-          model: Profile,
-          attributes: ['id', 'display_name', 'location']
-        },
-        {
-          model: Post,
-          attributes: ['id', 'title', 'content', 'user_id' ]
-        }
-      ] 
-    })
-      .then(dbUserData => {
-        if (!dbUserData) {
-          res.status(404).json({ message: 'No user found with this id '});
-          return;
-        }
-        res.json(dbUserData);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  });
-
-// POST 
+// create a new account
 router.post("/", (req, res) => {
   User.create({
     display_name: req.body.display_name,
@@ -64,6 +21,7 @@ router.post("/", (req, res) => {
     });
 });
 
+// allow users to login
 router.post('/login', (req, res) => {
     User.findOne({
       where: {
@@ -91,6 +49,7 @@ router.post('/login', (req, res) => {
     });
 })
 
+// allows users to logout
 router.post('/logout', (req, res) => {
   if(req.session.loggedIn) {
     req.session.destroy(() => {
@@ -103,7 +62,7 @@ router.post('/logout', (req, res) => {
 });
 
 
-// PUT 1
+// allows users to create a new account
   router.put('/:id', withAuth, (req, res) => {
 
     User.update(req.body, {
@@ -126,25 +85,47 @@ router.post('/logout', (req, res) => {
   });
 
 
-// DELETE 1
-  router.delete('/:id', withAuth, (req, res) => {
-    User.destroy({
-      where: {
-        id: req.params.id
-      }
-    })
-      .then(dbUserData => {
-        if (!dbUserData) {
-          res.status(404).json({ message: 'No user found with this id' });
-          return;
-        }
-        res.json(dbUserData);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  });
+// // allow users to update their profile
+//   router.put('/settings/:id', withAuth, (req, res) => {
+//     Profile.update(req.body, {
+//       individualHooks: true,
+//       where: {
+//         user_id: req.session.user_id
+//       }
+//     })
+//       .then(dbProfileData => {
+//         if (!dbProfileData) {
+//           res.status(404).json({ message: 'No profile found with this id' });
+//           return;
+//         }
+//         res.json(dbProfileData);
+//       })
+//       .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//       });
+//   });
+
+
+// // allow users to delete their account
+//   router.delete('/:id', withAuth, (req, res) => {
+//     User.destroy({
+//       where: {
+//         id: req.params.id
+//       }
+//     })
+//       .then(dbUserData => {
+//         if (!dbUserData) {
+//           res.status(404).json({ message: 'No user found with this id' });
+//           return;
+//         }
+//         res.json(dbUserData);
+//       })
+//       .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//       });
+//   });
 
 
 module.exports = router;

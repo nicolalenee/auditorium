@@ -8,7 +8,8 @@ async function updateProfileClickHandler(event) {
     const bio = document.querySelector('#bio').value.trim();
     const media = document.querySelector('#media').value.trim();
 
-    const response = await fetch('api/profile', {
+
+    const response = await fetch(`/profile/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
             occupation,
