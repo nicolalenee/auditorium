@@ -48,16 +48,18 @@ router.get("/settings", (req, res) => {
     res.redirect("/login");
     return;
   }
-  Profile.findOne({
-    where: {
-      id: req.session.user_id
-    },
-    attributes: ['id', 'display_name', 'website_url', 'bio', 'media', 'location', 'phone_number', 'user_id' ]
+
+  Professions.findAll({
+    attributes: ['id', 'name']
   })
-  .then(dbProfileData => {
-    const profile = dbProfileData.get({ plain: true })
-    console.log(profile)
-    res.render("settings", { profile, loggedIn: req.session.loggedIn });
+  .then(dbProfessionsData => {
+    const professions = dbProfessionsData.get({ plain: true})
+    console.log(professions)
+    res.render('settings', { professions, loggedIn: req.session.loggedIn })
+  })
+  .catch(err => {
+    console.log(err)
+    res.status(500).json(err)
   })
 })
 
