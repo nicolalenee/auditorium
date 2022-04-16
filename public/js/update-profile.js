@@ -9,7 +9,7 @@ async function updateProfileClickHandler(event) {
     const media = document.querySelector('#media').value.trim();
 
 
-    const response = await fetch(`/profile/${id}`, {
+    const response = await fetch(`/profile/`, {
         method: 'PUT',
         body: JSON.stringify({
             occupation,
@@ -28,9 +28,6 @@ async function updateProfileClickHandler(event) {
     else {
         alert(response.statusText);
     }
-
-
-
 }
 
 document.querySelector('#update-submit-button').addEventListener('submit', updateProfileClickHandler);

@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User, Profile, Post, Professions } = require('../models');
 const withAuth = require('../utils/auth')
-const sequelize = require('../config/connection');
+
 // render the profile page and user will view their own profile
 router.get('/', (req, res) => {
   if (!req.session.loggedIn) {
@@ -48,73 +48,62 @@ router.get("/settings", (req, res) => {
     res.redirect("/login");
     return;
   }
+  Promise.all([
+    Professions.findAll({
+      attributes: ['id', 'name']
+    }),
+    Profile.findOne({
+      where: {
+        user_id: req.session.user_id
+      },
+      attributes: ['id', 'display_name', 'website_url', 'bio', 'media', 'location', 'phone_number', 'user_id'],
+      include: [
+        {
+          model: Professions,
+          attributes: ['id', 'name', 'user_id', 'profile_id']
+        }
+      ]
+    }),
+  ])
+  .then((data) => {
+    // get professions information from the array and get plain version to render professions dropdown menu
+    const professionInfo = data[0];
+    const professions = professionInfo.map(profession => profession.get({ plain: true }))
 
-  Professions.findAll({
-    attributes: ['id', 'name']
+    // get profile information to render so user can see previous settings
+    const profileInfo = data[1];
+    const profile = profileInfo.dataValues;
+    // render the settings page and pass information to handlebars template
+    res.render('settings', {professions, profile, loggedIn: req.session.loggedIn})
   })
-  .then(dbProfessionsData => {
-    const professions = dbProfessionsData.get({ plain: true})
-    console.log(professions)
-    res.render('settings', { professions, loggedIn: req.session.loggedIn })
-  })
+
   .catch(err => {
-    console.log(err)
-    res.status(500).json(err)
+    console.log(err);
+    res.status(500).json(err);
   })
 })
 
-// render the settings page and load the professions datalist menu and allows a user to update their profile
-router.put("/:id", (req, res) => {
-  if(!req.session.loggedIn) {
-    res.redirect("/login");
-    return;
-  }
+// allow users to update their profile
+router.put('/', (req, res) => {
   Profile.update(req.body, {
     individualHooks: true,
     where: {
-      id: req.params.id
-    },
-    attributes: [
-      'id', 
-      'display_name', 
-      'website_url', 
-      'bio', 
-      'media', 
-      'location', 
-      'phone_number', 
-      'user_id',
-      [sequelize.literal('(SELECT (*) FROM professions'), 'professions']
-     ]
+      user_id: req.session.user_id
+    }
   })
   .then(dbProfileData => {
+    if (!dbProfileData) {
+      res.status(404).json({ message: 'No profile found with this id!'});
+      return;
+    }
     res.json(dbProfileData);
-    res.render('settings', {loggedIn: req.session.loggedIn});
-  }).catch(err => {
+  })
+  .catch(err => {
     console.log(err);
     res.status(500).json(err);
-  })  
-});
+  })
+})
 
-// router.put('/:id', withAuth, (req, res) => {
-//   Profile.update(req.body, {
-//     individualHooks: true,
-//     where: {
-//       user_id: req.session.user_id
-//     },
-//     attributes: ['id', 'display_name', 'website_url', 'bio', 'media', 'location', 'phone_number', 'user_id' ]
-//   })
-//     .then(dbProfileData => {
-//       if (!dbProfileData) {
-//         res.status(404).json({ message: 'No profile found with this id' });
-//         return;
-//       }
-//       res.json(dbProfileData);
-//     })
-//     .catch(err => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
 
 
 router.post('/', withAuth, (req, res) => {

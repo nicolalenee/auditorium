@@ -14,7 +14,7 @@
   <div class="field mb-3">
     <label class="label">Industry/ Profession</label>
       <div class="control">
-        <input class="input" type="text" list="professions" id="profession" name="profession">
+        <input class="input" type="text" list="professions" id="profession" name="profession" placeholder="{{profile.professions.name}}">
         
 
         <!--this list will be pulled from a table in the database that gets updated as users enter in new values-->
@@ -31,7 +31,7 @@
   <!--Region-->
   <div class="field mb-3">
     <label class="label">Region</label>
-    <input class="input" type="text" id="region">
+    <input class="input" type="text" id="region" value="{{profile.location}}">
     <p class="help">This region can be where an artist may be willing to travel for work. For venues, this region can simply be where you are located.</p>
   </div>
 
@@ -39,7 +39,7 @@
   <div class="field mb-3">
     <label class="label">Contact Number</label>
     <div class="control">
-      <input class="input" type="tel" id="contact-number">
+      <input class="input" type="tel" id="contact-number" value="{{profile.phone_number}}">
       <p class="help">This number is to be displayed on your page if you would like to be contacted by phone. It's completely optional.</p>
     </div>
   </div>
@@ -48,14 +48,14 @@
   <div class="field mb-3">
     <label class="label">Website URL</label>
     <div class="control">
-      <input class="input" type="url" id="website-url" name="website-url">
+      <input class="input" type="url" id="website-url" name="website-url" value="{{profile.website_url}}">
     </div>
   </div>
 
   <!--bio-->
   <div class="field mb-3">
     <label class="label">Bio</label>
-    <textarea class="textarea resize-none" id="bio"></textarea>
+    <textarea class="textarea resize-none" id="bio" placeholder="{{profile.bio}}"></textarea>
     <p class="help">Talk about yourself! Let the people know what you're all about!</p>
   </div>
 
@@ -64,7 +64,7 @@
     <div class="control">
       <label class="label">Media</label>
         <label class="file-label">
-          <input class="input" type="text" id="media">
+          <input class="input" type="text" id="media" value="{{profile.media}}">
         </label>
       </div>
       
